@@ -1,0 +1,29 @@
+{
+  "name": "arthematics",
+  "version": "1.0.0",
+  "description": "A website about mathematical beauty.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/caesarlaiton/arthematics.git"
+  },
+  "keywords": [
+    "mathematics",
+    "art",
+    "beauty"
+  ],
+  "author": "César Laiton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/caesarlaiton/arthematics/issues"
+  },
+  "homepage": "https://github.com/caesarlaiton/arthematics#readme",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.4"
+  }
+}
