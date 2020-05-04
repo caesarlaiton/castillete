@@ -1,51 +1,24 @@
 {{ define "main" }}
 
-	<main class="flex justify-center">
-		<div class="grid grid-cols-1 xs:grid-cols-2 xs:gap-8 sm:grid-cols-3">
-			<article>
-				<img src="http://placekitten.com/200">
+	{{ range .Pages }}
 
-				<p>The four lions of death</p>
+		<article>
 
-				<div class="flex justify-between">
-					<p>Photographerman</p>
-					<p>2021</p>
+			<img src="http://placekitten.com/320">
+
+			<div class="max-w-xs">
+
+				<h3 class="font-bold">{{ .Title }}</h3>
+
+				<div class="flex justify-between flex-wrap text-sm">
+					<p>{{ .Params.artist }}</p>
+					<p>{{ .Params.year }}</p>
 				</div>
-			</article>
 
-			<article>
-				<img src="http://placekitten.com/200">
+			</div>
 
-				<p>The four lions of death</p>
-
-				<div class="flex justify-between">
-					<p>Photographerman</p>
-					<p>2021</p>
-				</div>
-			</article>
-
-			<article>
-				<img src="http://placekitten.com/200">
-
-				<p>The four lions of death</p>
-
-				<div class="flex justify-between">
-					<p>Photographerman</p>
-					<p>2021</p>
-				</div>
-			</article>
-
-			<article>
-				<img src="http://placekitten.com/200">
-
-				<p>The four lions of death</p>
-
-				<div class="flex justify-between">
-					<p>Photographerman</p>
-					<p>2021</p>
-				</div>
-			</article>
-		</div>
-	</main>
+		</article>
+	
+	{{ end }}
 
 {{ end }}
