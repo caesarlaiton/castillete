@@ -1,14 +1,26 @@
 {{ define "main" }}
-	{{ range .Pages }}
-		<article>
-			<img src="http://placekitten.com/420">
 
-			<h3 class="font-semibold">{{ .Title }}</h3>
+	<main class="flex justify-center">
 
-			<div class="text-sm flex flex-wrap justify-between">
-				<p>{{ .Params.artist }}</p>
-				<p>{{ .Params.year }}</p>
-			</div>
-		</article>
-	{{ end }}
+		<div class="grid gap-4 grid-cols-1 2xs:px-1 xs:px-4 xs:grid-cols-2 xs:max-w-screen-md md:px-8 md:gap-8 md:grid-cols-3 md:max-w-screen-lg">
+
+			{{ range .Pages }}
+
+				<article>
+					<a href="#"><img src="http://placekitten.com/420"></a>
+
+					<a href="#"><h3 class="inline-block font-semibold">{{ .Title }}</h3></a>
+
+					<div class="text-sm flex flex-wrap justify-between">
+						<p><img class="inline w-3 h-3" src="/palette.svg"> {{ .Params.artist }}</p>
+						<p><img class="inline w-3 h-3" src="/calendar.svg"> {{ .Params.year }}</p>
+					</div>
+				</article>
+
+			{{ end }}
+
+		</div>
+
+	</main>
+
 {{ end }}

@@ -1,23 +1,13 @@
 <!DOCTYPE html>
-<html class="h-full">
+<html lang="{{ .Site.Language.Lang }}">
 
 	{{ partial "head.html" . }}
 
-	<body class="h-full bg-gray-100 text-gray-600">
+	<body class="bg-gray-100 text-gray-600">
 
 		{{ partial "header.html" . }}
 
-		<main class="flex justify-center">
-			
-			<div class="grid gap-4 grid-cols-1 2xs:px-1 xs:px-4 xs:grid-cols-2 xs:max-w-screen-md md:px-8 md:gap-8 md:grid-cols-3 md:max-w-screen-lg">
-
-				{{ block "main" . }}
-
-				{{ end }}
-
-			</div>
-
-		</main>
+		{{ block "main" . }}{{ end }}
 
 		{{ partial "footer.html" . }}
 
