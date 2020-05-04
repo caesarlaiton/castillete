@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html class="h-full">
+
 	{{ partial "head.html" . }}
 
 	<body class="h-full bg-gray-100 text-gray-600">
@@ -8,7 +9,7 @@
 
 		<main class="flex justify-center">
 			
-			<div class="xs:max-w-md sm:max-w-screen-sm grid gap-8 grid-cols-1 xs:grid-cols-2 sm:grid-cols-3">
+			<div class="grid gap-4 grid-cols-1 2xs:px-1 xs:px-4 xs:grid-cols-2 xs:max-w-screen-md md:px-8 md:gap-8 md:grid-cols-3 md:max-w-screen-lg">
 
 				{{ block "main" . }}
 
@@ -21,4 +22,5 @@
 		{{ partial "footer.html" . }}
 
 	</body>
+
 </html>
