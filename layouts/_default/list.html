@@ -1,54 +1,24 @@
 {{ define "main" }}
 
-	<main class="flex flex-col items-center">
+  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
 
-		<div class="grid gap-4 grid-cols-1 2xs:px-1 xs:px-4 xs:grid-cols-2 xs:max-w-screen-md md:px-8 md:gap-8 md:grid-cols-3 md:max-w-screen-lg">
+    {{ range .Pages }}
 
-			{{ range .Pages }}
+      <article class="max-w-xs mx-auto">
 
-				<article>
-					<a href="#"><img src="http://placekitten.com/420"></a>
+        <a href="{{ .RelPermalink }}"><img class="shadow rounded" src="http://placekitten.com/320" width="320" height="320"></a>
 
-					<a href="#"><h3 class="inline-block font-semibold">{{ .Title }}</h3></a>
+        <a href="{{ .RelPermalink }}"><h3 class="inline-block font-semibold">{{ .Title }}</h3></a>
 
-					<div class="text-sm flex flex-wrap justify-between">
-						<p><img class="inline w-3 h-3" src="/palette.svg"> {{ .Params.artist }}</p>
-						<p><img class="inline w-3 h-3" src="/calendar.svg"> {{ .Params.year }}</p>
-					</div>
-				</article>
+        <div class="text-sm flex flex-wrap justify-between">
+          <a href="{{ .Params.artists }}"><img class="inline w-3 h-3" src="/palette.svg"> {{ .Params.name }}</a>
+          <p><img class="inline w-3 h-3" src="/calendar.svg"> {{ .Params.year }}</p>
+        </div>
 
-			{{ end }}
+      </article>
 
-		</div>
+    {{ end }}
 
-		<nav>
-			{{ $pag := .Paginator }}
-
-			{{ if $pag.HasPrev }}
-				<a href="#"><</a>
-			{{ end }}
-
-			<!--{{ if 0 }}
-				<a href="#">{{ $pag.First.PageNumber }}</a>
-				<a href="#">...</a>
-			{{ end }}
-			
-			{{ range $pag.Pagers }}
-				{{ if 0 }}
-					<a href="#">{{ .PageNumber }}</a>
-				{{ end }}
-			{{ end }}
-		
-			{{ if 0 }}
-				<a href="#">...</a>
-				<a href="#">{{ $pag.Last.PageNumber }}</a>
-			{{ end }}-->
-
-			{{ if $pag.HasNext }}
-				<a href="#">></a>
-			{{ end }}
-		</nav>
-
-	</main>
+  </div>
 
 {{ end }}

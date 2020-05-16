@@ -1,0 +1,25 @@
+{{ define "main" }}
+
+    <article class="flex flex-wrap justify-between">
+
+      <div>
+        <img class="shadow rounded" src="http://placekitten.com/320" width="320" height="320">
+
+        <h3 class="font-semibold">{{ .Title }}</h3>
+
+        <div class="text-sm flex flex-wrap justify-between">
+          <p><img class="inline w-3 h-3" src="/palette.svg" width="12" height="12"> {{ .Params.name }}</p>
+
+          <p><img class="inline w-3 h-3" src="/calendar.svg" width="12" height="12"> {{ .Params.year }}</p>
+        </div>
+      </div>
+
+      <div class="max-w-2xl">
+      
+        {{ .Content }}
+
+      </div>
+
+    </article>
+
+{{ end }}

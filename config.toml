@@ -1,4 +1,7 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Arthematics"
-paginate = 1
+paginate = 9
+
+[taxonomies]
+  artist = "artists"
