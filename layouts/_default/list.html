@@ -1,27 +1,31 @@
 {{ define "main" }}
 
+  <div style="visibility: hidden" class="fixed top-0 left-0 w-screen h-screen flex justify-center items-center special">
+    <img class="special" src="" width="640" height="640">
+  </div>
+
   <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
 
     {{ range .Pages }}
 
       <article class="max-w-xs mx-auto">
 
-        <a href="{{ .RelPermalink }}"><img class="shadow rounded" src="http://placekitten.com/320" width="320" height="320"></a>
+        <img class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320">
 
-        <a href="{{ .RelPermalink }}"><h3 class="inline-block font-semibold">{{ .Title }}</h3></a>
+        <h3>{{ .Title }}</h3>
 
-        <div class="text-sm flex flex-wrap justify-between">
+        {{ range .Params.tags }}
 
-          <a href="/artists/{{ anchorize .Params.name }}"><img class="inline w-3 h-3" src="/palette.svg"> {{ .Params.name }}</a>
+          <a href="/portfolio/tag/{{ anchorize . }}/">{{ . }}</a>
 
-          <p><img class="inline w-3 h-3" src="/calendar.svg"> {{ .Params.year }}</p>
-
-        </div>
+        {{ end }}
 
       </article>
 
     {{ end }}
 
   </div>
+
+  <script src="/main.js"></script>
 
 {{ end }}

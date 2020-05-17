@@ -1,7 +1,9 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
 title = "Arthematics"
-paginate = 9
 
 [taxonomies]
-  artist = "artists"
+  tag = "tags"
+
+[permalinks]
+  tags = "/portfolio/tag/:slug/"
