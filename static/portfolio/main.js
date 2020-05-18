@@ -1,27 +1,42 @@
 "use strict";
 
-let div = document.getElementsByClassName("special")[0].style,
-  img = document.getElementsByClassName("special")[1],
-  main = document.getElementsByTagName("main")[0];
+const body = document.querySelector("body"),
+  main = document.querySelector("main"),
+  divModal = document.querySelector("div.modal"),
+  imgModal = document.querySelector("img.modal");
 
-main.addEventListener("click", event => {
-  check(event);
-});
+main.addEventListener("click", event => checkTag(event));
+main.addEventListener("keydown", event => checkKey(event));
 
-main.addEventListener("keydown", event => {
-  if (event.key === "Enter"){
-    event.preventDefault();
-    check(event.originalTarget.firstChild);
-  } else if (event.key === "Escape"){
-    div.visibility = "hidden";
-  };
-});
-
-function check(event){
+function checkTag(event){
   if (event.tagName === "IMG" || event.target.tagName === "IMG"){
-    img.src = event.src || event.target.src;
-    div.visibility = "visible";
+    imgModal.src = event.src || event.target.src;
+    showModal();
   } else {
-    div.visibility = "hidden";
+    hideModal();
   };
+};
+
+function checkKey(event){
+  switch (event.key) {
+    case "Enter":
+      event.preventDefault();
+      checkTag(event.originalTarget.firstChild);
+      break;
+    case "Escape":
+      hideModal();
+      break;
+    default:
+      break;
+  };
+};
+
+function showModal() {
+  divModal.style.visibility = "visible";
+  body.style.overflowY = "hidden";
+};
+
+function hideModal() {
+  divModal.style.visibility = "hidden";
+  body.style.overflowY = "visible";
 };
