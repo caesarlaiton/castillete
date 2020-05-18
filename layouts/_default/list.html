@@ -1,7 +1,15 @@
 {{ define "main" }}
 
-  <div style="visibility: hidden" class="fixed top-0 left-0 w-screen h-screen flex justify-center items-center special">
+  <div style="visibility: hidden" class="fixed top-0 left-0 w-screen h-screen flex justify-center items-center special bg-black-opacity-75 text-white">
+
+    <button class="prevBtn" type="button">Prev</button>
+
     <img class="special" src="" width="640" height="640">
+
+    <button class="nextBtn" type="button"><img class="nextImg" src="/portfolio/the-starry-night.jpg" width="0" height="0">Next</button>
+
+    <button type="button" class="self-start">X</button>
+
   </div>
 
   <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
@@ -10,7 +18,7 @@
 
       <article class="max-w-xs mx-auto">
 
-        <img class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320">
+        <button type="button"><img class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320"></button>
 
         <h3>{{ .Title }}</h3>
 
@@ -26,6 +34,6 @@
 
   </div>
 
-  <script src="/main.js"></script>
+  <script src="/portfolio/main.js"></script>
 
 {{ end }}
