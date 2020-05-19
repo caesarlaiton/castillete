@@ -1,5 +1,41 @@
 {{ define "main" }}
 
-  <p>layouts/_default/single.html</p>
+  <main class="bg-black flex justify-center items-center h-screen text-white text-6xl">
+
+    {{ if .NextInSection }}
+      <a href="{{ .NextInSection.RelPermalink }}"><</a>
+    {{ else }}
+      <a style="visibility: hidden"><</a>
+    {{ end }}
+
+    <img class="" src="/portfolio/the-starry-night.jpg" width="640" height="640">
+
+    {{ if .PrevInSection }}
+      <a class="" href="{{ .PrevInSection.RelPermalink }}">></a>
+    {{ else }}
+      <a style="visibility: hidden">></a>
+    {{ end }}
+
+    <a class="self-start cursor-pointer" href="/portfolio/#{{ anchorize .Title }}">X</a>
+
+  </main>
+
+  <script>
+    const main = document.querySelector("main"),
+      url = "http://localhost:1313/portfolio/#{{ anchorize .Title }}";
+
+    main.addEventListener("click", event => {
+      if (event.target.tagName !== "IMG" || event.target.tagName !== "A"){
+        window.location.href = url;
+      };
+    });
+
+    window.addEventListener("keydown", event => {
+      if (event.key === "Escape"){
+        event.preventDefault();
+        window.location.href = url;
+      };
+    });
+  </script>
 
 {{ end }}

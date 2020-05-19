@@ -7,13 +7,11 @@
 
 		{{ partial "header.html" . }}
 
-    <main class="max-w-screen-lg mx-auto">
+		{{ block "main" . }}
 
-      {{ block "main" . }}
-      
-      {{ end }}
+		{{ end }}
 
-    </main>
+		<script src="//instant.page/5.0.1" type="module" integrity="sha384-0DvoZ9kNcB36fWcQApIMIGQoTzoBDYTQ85e8nmsfFOGz4RHAdUhADqJt4k3K2uLS"></script>
 
 	</body>
 

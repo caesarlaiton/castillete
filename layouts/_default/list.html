@@ -1,39 +1,43 @@
 {{ define "main" }}
 
-  <!-- Start modal -->
-  <div style="visibility: hidden" class="fixed top-0 left-0 w-screen h-screen flex justify-center items-center modal bg-black-opacity-75 text-white">
+  <main>
 
-    <img class="modal" src="" width="640" height="640">
+    <!-- Start modal
+    <div style="visibility: hidden" class="fixed top-0 left-0 w-screen h-screen flex justify-center items-center modal bg-black-opacity-75 text-white">
 
-    <button type="button" class="self-start">X</button>
+      <img class="modal" src="" width="640" height="640">
 
-  </div>
-  <!-- End modal -->
+      <button type="button" class="self-start">X</button>
 
-  <!-- Start main grid -->
-  <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+    </div>
+    End modal -->
 
-    {{ range .Pages }}
+    <!-- Start main grid -->
+    <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
 
-      <article class="max-w-xs mx-auto">
+      {{ range .Pages }}
 
-        <button type="button"><img class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320"></button>
+        <article class="max-w-xs mx-auto">
 
-        <h3>{{ .Title }}</h3>
+          <a href="{{ .RelPermalink }}"><img id="{{ anchorize .Title }}" class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320"></a>
 
-        {{ range .Params.tags }}
+          <h3>{{ .Title }}</h3>
 
-          <a href="/portfolio/tag/{{ anchorize . }}/">{{ . }}</a>
+          {{ range .Params.tags }}
 
-        {{ end }}
+            <a href="/portfolio/tag/{{ anchorize . }}/">{{ . }}</a>
 
-      </article>
+          {{ end }}
 
-    {{ end }}
+        </article>
 
-  </div>
-  <!-- End main grid -->
+      {{ end }}
 
-  <script src="/portfolio/main.js"></script>
+    </div>
+    <!-- End main grid -->
+
+  </main>
+
+  <!--<script src="/portfolio/main.js"></script>-->
 
 {{ end }}
