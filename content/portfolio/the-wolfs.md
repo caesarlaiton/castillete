@@ -1,8 +1,8 @@
 ---
-title: "The Starry Night"
+title: "The Wolfs"
 img: "/portfolio/featured.jpg"
 tags:
-- fantasy
+- terror
 - dark
 ---
 

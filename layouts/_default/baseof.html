@@ -3,12 +3,20 @@
 
 	{{ partial "head.html" . }}
 
-	<body class="bg-gray-100 text-gray-600">
+	<body class="h-screen bg-gray-100 text-gray-600 flex flex-col">
 
-		{{ partial "header.html" . }}
+		{{ if .Pages }}
+			{{ partial "header.html" }}
+		{{ end }}
 
-		{{ block "main" . }}
+		<main class="max-w-screen-lg mx-auto flex flex-grow">
+			{{ block "main" . }}
 
+			{{ end }}
+		</main>
+
+		{{ if .Pages }}
+			{{ partial "footer.html" }}
 		{{ end }}
 
 		<script src="//instant.page/5.0.1" type="module" integrity="sha384-0DvoZ9kNcB36fWcQApIMIGQoTzoBDYTQ85e8nmsfFOGz4RHAdUhADqJt4k3K2uLS"></script>

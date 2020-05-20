@@ -7,3 +7,11 @@
 .bg-black-opacity-75 {
   background-color: rgba(0,0,0,.75);
 }
+
+.grid-custom-1-cols-2 {
+	grid-template-columns: minmax(0, .5fr) minmax(0, 1.5fr);
+}
+
+.grid-custom-2-cols-2 {
+	grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+}
