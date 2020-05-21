@@ -9,7 +9,7 @@
 }
 
 .grid-custom-1-cols-2 {
-	grid-template-columns: minmax(0, .5fr) minmax(0, 1.5fr);
+	grid-template-columns: minmax(0, .25fr) minmax(0, 1.75fr);
 }
 
 .grid-custom-2-cols-2 {

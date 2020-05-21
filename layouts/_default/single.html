@@ -1,24 +1,20 @@
 {{ define "main" }}
 
-  <nav class="absolute top-0 left-0 w-full bg-black flex justify-center items-center h-full text-white text-6xl">
+	<main class="flex-grow absolute top-o left-o w-full bg-black h-full text-white flex flex-col justify-center">
 
-    {{ if .NextInSection }}
-      <a href="{{ .NextInSection.RelPermalink }}"><</a>
-    {{ else }}
-      <a style="visibility: hidden"><</a>
-    {{ end }}
+		<a class="self-end" href="/portfolio/#{{ anchorize .Title }}">X</a>
 
-    <img class="" src="/portfolio/the-starry-night.jpg" width="640" height="640">
-
-    {{ if .PrevInSection }}
-      <a class="" href="{{ .PrevInSection.RelPermalink }}">></a>
-    {{ else }}
-      <a style="visibility: hidden">></a>
-    {{ end }}
-
-    <a class="self-start cursor-pointer" href="/portfolio/#{{ anchorize .Title }}">X</a>
-
-  </nav>
+		<div class="max-w-screen-md mx-auto">
+			<img src="/portfolio/the-starry-night.jpg">
+			<p>{{ .Title }}</p>
+			<ul class="flex flex-wrap">
+			{{ range .Params.tags }}
+				<li class="mr-1"><a href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+			{{ end }}
+			</ul>
+		</div>
+	
+	</main>
 
   <script>
     const main = document.querySelector("main"),

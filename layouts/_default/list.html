@@ -1,52 +1,95 @@
 {{ define "main" }}
 
-	<div class="grid grid-custom-1-cols-2">
+	{{ partial "header.html" }}
 
-		<aside>
+	<main class="px-2 w-full max-w-screen-lg flex-grow">
 
-			<h3>Tags</h3>
+		{{ if .Pages }}
 
-			<nav>
-				<ul>
+			{{ $title := .Title }}
 
-					<li>
-						<a href="/portfolio">All</a>
-					</li>
+			<div class="sm:grid grid-custom-1-cols-2">
 
-				{{ range .Site.Taxonomies.tags }}
+				<aside class="text-xs font-bold hidden sm:block">
 
-					<li>
-						<a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} {{ .Count }}</a>
-					</li>
+					<h3 class="mb-2 text-lg">Tags</h3>
 
-				{{ end }}
+					<nav class="text-blue-600">
 
-				</ul>
-			</nav>
-		</aside>
+						<ul>
 
-		<div class="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+						{{ if eq .Kind "section" }}
 
-			{{ range .Pages }}
+							<li class="pl-2 py-2">All <span class="text-gray-500 text-xs">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></li>
 
-				<article class="max-w-xs mx-auto">
+							{{ range .Site.Taxonomies.tags }}
 
-					<a href="{{ .RelPermalink }}"><img id="{{ anchorize .Title }}" class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320"></a>
+								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500 text-xs">({{ .Count }})</span></a></li>
 
-					<h3>{{ .Title }}</h3>
+							{{ end }}
 
-					{{ range .Params.tags }}
+						{{ else }}
 
-						<a href="/portfolio/tag/{{ anchorize . }}/">{{ . }}</a>
+							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100" href="/portfolio/">All <span class="text-gray-500 text-xs">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></a></li>
+
+							{{ range .Site.Taxonomies.tags }}
+
+								{{ if eq $title .Page.Title }}
+
+									<li class="pl-2 py-2 break-words">{{ .Page.Title }} <span class="text-gray-500 text-xs">({{ .Count }})</span></li>
+
+								{{ else }}
+
+									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500 text-xs">({{ .Count }})</span></a></li>
+
+								{{ end }}
+
+							{{ end }}
+
+						{{ end }}
+
+						</ul>
+					</nav>
+				</aside>
+
+				<div class="ml-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+
+					{{ range .Pages }}
+
+						<article class="mb-4 max-w-xs mx-auto">
+
+							<a href="{{ .RelPermalink }}"><img id="{{ anchorize .Title }}" class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320"></a>
+
+							<h3 class="mt-1">{{ .Title }}</h3>
+
+							<ul class="flex flex-wrap">
+							{{ range .Params.tags }}
+
+								<li class="mr-1"><a class="text-xs text-blue-700 opacity-75 hover:opacity-100" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+
+							{{ end }}
+							</ul>
+
+						</article>
 
 					{{ end }}
 
-				</article>
+				</div>
 
-			{{ end }}
+			</div>
 
-		</div>
+			<a class="p-1 bg-blue-900 sm:hidden text-xs font-bold text-white shadow opacity-50 hover:opacity-100 fixed bottom-0 left-0 w-full text-center" href="/portfolio/tags/">Tags</a>
 
-	</div>
+		{{ else }}
+
+			<p class="text-center">There aren't paintings available</p>
+
+		{{ end }}
+
+	</main>
+
+	{{ partial "footer.html" . }}
+
+	<span class="sm:hidden">&nbsp;</span>
 
 {{ end }}
