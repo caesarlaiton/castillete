@@ -1,48 +1,50 @@
 {{ define "main" }}
 	
-	<main class="pt-2 sm:pt-16 px-2 max-w-screen-lg flex-grow">
+	<main class="pt-4 sm:pt-16 px-2 max-w-screen-lg flex-grow">
 
-		<div class="h-full md:grid grid-custom-2-cols-2">
+		<div class="h-full flex flex-wrap justify-between">
 
-			<section class="mx-auto flex items-center"> 
-				
+			<section class="mx-auto max-w-md flex items-center"> 
+
 				<div>
 
 					<img class="w-32 h-32 mx-auto rounded-full" src="/portfolio/the-starry-night.jpg">
 
 					<h3 class="my-2 text-center">Armando Reverón</h3>
 
-					<p class="mb-8 max-w-md md:max-w-full">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lectus massa, auctor in elit eget, tristique tempor est. Curabitur consequat quam sit amet dapibus pulvinar. Sed luctus non lacus id posuere. Donec eu augue blandit, euismod turpis sed, tempus metus. Pellentesque tincidunt et augue nec fringilla.</p>
+					<p class="mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lectus massa, auctor in elit eget, tristique tempor est. Curabitur consequat quam sit amet dapibus pulvinar. Sed luctus non lacus id posuere. Donec eu augue blandit, euismod turpis sed, tempus metus. Pellentesque tincidunt et augue nec fringilla.</p>
 
 				</div>
 
 			</section>
 
-			<section>
+			<section class="mx-auto max-w-md w-full">
 
-				<article class="mb-8 flex flex-wrap justify-center items-center md:justify-end">
-					<a href="#"><img class="mr-4 mb-2 w-32 h-32 shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
-					<p class="max-w-xs">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
+				<article class="mb-8 flex flex-wrap justify-between">
+					<a href="#"><img class="sm:w-40 h-full shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
+					<p class="sm:w-64">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
 				</article>
 
-				<article class="mb-8 flex flex-wrap justify-center items-center md:justify-end">
-					<a href="#"><img class="mb-2 ml-4 w-32 h-32 shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
-					<p class="max-w-xs order-first">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
+				<article class="mb-8 flex flex-wrap justify-between">
+					<a href="#"><img class="sm:w-40 h-full shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
+					<p class="sm:w-64 sm:order-first">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
 				</article>
 
-				<article class="flex flex-wrap justify-center items-center md:justify-end">
-					<a href="#"><img class="mb-2 mr-4 w-32 h-32 shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
-					<p class="max-w-xs">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
+				<article class="flex flex-wrap justify-between">
+					<a href="#"><img class="sm:w-40 h-full shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
+					<p class="sm:w-64">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
 				</article>
 
 			</section>
 
-			<section class="pt-8 sm:pt-0 flex items-center justify-center col-span-2 text-center">
+			<section class="my-16 sm:my-8 w-full sm:pt-0 flex justify-center text-center">
 
 				<div>
+
 					<p>Wanna see more?</p>
 
 					<a class="m-2 p-2 bg-blue-800 inline-block rounded shadow text-white font-bold opacity-75 hover:opacity-100" href="/portfolio">Portfolio</a>
+
 				</div>
 
 			</section>

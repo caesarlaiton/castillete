@@ -4,6 +4,10 @@
 
 @tailwind utilities;
 
+.p {
+	@apply text-xs text-gray-500 bg-gray-500 shadow
+}
+
 .bg-black-opacity-75 {
   background-color: rgba(0,0,0,.75);
 }

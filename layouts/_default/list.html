@@ -8,39 +8,39 @@
 
 			{{ $title := .Title }}
 
-			<div class="sm:grid grid-custom-1-cols-2">
+			<div class="flex justify-around">
 
-				<aside class="text-xs font-bold hidden sm:block">
+				<aside class="w-32 font-bold hidden sm:block">
 
-					<h3 class="mb-2 text-lg">Tags</h3>
+					<h3 class="mb-2 text-sm">Tags</h3>
 
-					<nav class="text-blue-600">
+					<nav class="text-xs text-blue-500">
 
 						<ul>
 
 						{{ if eq .Kind "section" }}
 
-							<li class="pl-2 py-2">All <span class="text-gray-500 text-xs">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></li>
+							<li><a class="pl-2 py-2 text-blue-600">All <span class="text-gray-500">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</a></span></li>
 
-							{{ range .Site.Taxonomies.tags }}
+							{{ range .Site.Taxonomies.tags.ByCount }}
 
-								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500 text-xs">({{ .Count }})</span></a></li>
+								<li><a class="pl-2 py-2 break-words block opacity-75 hover:opacity-100 hover:text-blue-600" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
 
 							{{ end }}
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100" href="/portfolio/">All <span class="text-gray-500 text-xs">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 opacity-75 hover:opacity-100 hover:text-blue-600" href="/portfolio/">All <span class="text-gray-500">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></a></li>
 
-							{{ range .Site.Taxonomies.tags }}
+							{{ range .Site.Taxonomies.tags.ByCount }}
 
 								{{ if eq $title .Page.Title }}
 
-									<li class="pl-2 py-2 break-words">{{ .Page.Title }} <span class="text-gray-500 text-xs">({{ .Count }})</span></li>
+									<li class="pl-2 py-2 break-words">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></li>
 
 								{{ else }}
 
-									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500 text-xs">({{ .Count }})</span></a></li>
+									<li><a class="pl-2 py-2 block break-words opacity-75 hover:opacity-100 hover:text-blue-600" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
 
 								{{ end }}
 
@@ -52,22 +52,24 @@
 					</nav>
 				</aside>
 
-				<div class="ml-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+				<div class="w-full grid gap-4 grid-cols-1 sm:ml-4 md:grid-cols-2 lg:grid-cols-3">
 
 					{{ range .Pages }}
 
-						<article class="mb-4 max-w-xs mx-auto">
+						<article class="mb-4 mx-auto max-w-xs lg:w-64">
 
-							<a href="{{ .RelPermalink }}"><img id="{{ anchorize .Title }}" class="shadow rounded" src="/portfolio/the-starry-night.jpg" width="320" height="320"></a>
+							<a href="{{ .RelPermalink }}"><img id="{{ anchorize .Title }}" class="shadow rounded" src="/portfolio/the-starry-night.jpg"></a>
 
 							<h3 class="mt-1">{{ .Title }}</h3>
 
 							<ul class="flex flex-wrap">
+
 							{{ range .Params.tags }}
 
-								<li class="mr-1"><a class="text-xs text-blue-700 opacity-75 hover:opacity-100" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+								<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
 
 							{{ end }}
+
 							</ul>
 
 						</article>
@@ -78,7 +80,7 @@
 
 			</div>
 
-			<a class="p-1 bg-blue-900 sm:hidden text-xs font-bold text-white shadow opacity-50 hover:opacity-100 fixed bottom-0 left-0 w-full text-center" href="/portfolio/tags/">Tags</a>
+			<button class="p-1 bg-blue-900 sm:hidden font-bold text-white shadow opacity-75 hover:opacity-100 fixed bottom-0 left-0 w-full text-center z-10" href="/portfolio/tags/" type="button">Tags</button>
 
 		{{ else }}
 
@@ -91,5 +93,35 @@
 	{{ partial "footer.html" . }}
 
 	<span class="sm:hidden">&nbsp;</span>
+
+	<script>
+
+		const body = document.querySelector("body"),
+			aside = document.querySelector("aside"),
+			btn = document.querySelector("button");
+
+		let counter = 0;
+
+		btn.addEventListener("click", () => counter ? hideTags() : showTags());
+
+		window.addEventListener("keydown", event => { if (counter && event.key === "Escape") hideTags() });
+
+		function showTags(){
+			body.style.overflowY = "hidden";
+			btn.classList.remove("opacity-75");
+			aside.classList.add("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
+			aside.classList.remove("hidden");
+			counter++;
+		};
+
+		function hideTags(){
+			body.style.overflowY = "scroll";
+			btn.classList.add("opacity-75");
+			aside.classList.add("hidden");
+			aside.classList.remove("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
+			counter = 0;
+		};
+
+	</script>
 
 {{ end }}
