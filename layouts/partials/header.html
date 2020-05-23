@@ -1,7 +1,31 @@
 <header class="py-2 mb-8">
+
 	<nav>
+
 		<ul class="flex justify-center items-center">
-			<li><a href="/"><img class="w-4 h-4 opacity-25 hover:opacity-100" src="/home.svg"></a></li>
+
+			<li class="mr-16">
+
+				<a class="block nav" href="/">Home
+
+					<div class="{{ if .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500"></div>
+
+				</a>
+
+			</li>
+
+			<li>
+
+				<a class="block nav" href="/portfolio/">Portfolio
+
+					<div class="{{ if not .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500"></div>
+
+				</a>
+
+			</li>
+
 		</ul>
+
 	</nav>
+
 </header>

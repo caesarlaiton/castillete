@@ -1,19 +1,33 @@
 <footer class="pb-2 w-full flex-shrink text-center">
+
 	<ul class="px-2 max-w-screen-lg mx-auto flex justify-between items-center">
 
 		{{ if .IsHome }}
+
 			<li class="text-xs">Armando Reverón - {{ now.Year }}</li>
+
 		{{ else }}
+
 			<li><a class="text-xs hover:text-gray-700" href="/">Armando Reverón - {{ now.Year }}</a></li>
+
 		{{ end }}
 
 		<div class="flex">
 
 			<li class="mx-4"><a href="#"><img class="w-4 h-4 opacity-50 hover:opacity-100" src="/facebook.svg"></a></li>
+
 			<li class="mr-4"><a href="#"><img class="w-4 h-4 opacity-50 hover:opacity-100" src="/instagram.svg"></a></li>
+
 			<li><a href="#"><img class="w-4 h-4 opacity-50 hover:opacity-100" src="/twitter.svg"></a></li>
 
 		</div>
 
 	</ul>
+
 </footer>
+
+{{ if or (eq .Kind "section") (eq .Kind "taxonomy") }}
+
+	<span class="sm:hidden">&nbsp;</span>
+
+{{ end }}

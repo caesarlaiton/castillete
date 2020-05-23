@@ -1,42 +1,60 @@
 "use strict";
 
 const body = document.querySelector("body"),
-  main = document.querySelector("main"),
-  divModal = document.querySelector("div.modal"),
-  imgModal = document.querySelector("img.modal");
+	aside = document.querySelector("aside"),
+	tagsBtn = document.querySelector(".tagsBtn"),
+	btnModal = document.querySelector("button.modal"),
+	divModal = document.querySelector("div.modal");
 
-main.addEventListener("click", event => checkTag(event));
-main.addEventListener("keydown", event => checkKey(event));
+let counter = 0;
 
-function checkTag(event){
-  if (event.tagName === "IMG" || event.target.tagName === "IMG"){
-    imgModal.src = event.src || event.target.src;
-    showModal();
-  } else {
-    hideModal();
-  };
+window.addEventListener("keydown", event => checkKey(event));
+divModal.addEventListener("click", event => checkClick(event));
+btnModal.addEventListener("click", showModal);
+tagsBtn.addEventListener("click", checkCounter);
+
+function checkCounter(){
+	counter ? hideTags() : showTags();
 };
 
 function checkKey(event){
-  switch (event.key) {
-    case "Enter":
-      event.preventDefault();
-      checkTag(event.originalTarget.firstChild);
-      break;
-    case "Escape":
-      hideModal();
-      break;
-    default:
-      break;
-  };
+	if (event.key === "Escape" && counter){
+		hideTags();
+	} else if (event.key === "Escape" && !(divModal.style.display)){
+		hideModal();
+	};
 };
 
-function showModal() {
-  divModal.style.visibility = "visible";
-  body.style.overflowY = "hidden";
+function checkClick(event){
+	if (event.target.tagName === "IMG"){
+		return;
+	} else {
+		hideModal();
+	};
 };
 
-function hideModal() {
-  divModal.style.visibility = "hidden";
-  body.style.overflowY = "visible";
+function showTags(){
+	body.style.overflowY = "hidden";
+	tagsBtn.classList.remove("opacity-75");
+	aside.classList.add("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
+	aside.classList.remove("hidden");
+	counter++;
+};
+
+function hideTags(){
+	body.style.overflowY = "scroll";
+	tagsBtn.classList.add("opacity-75");
+	aside.classList.add("hidden");
+	aside.classList.remove("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
+	counter = 0;
+};
+
+function showModal(){
+	body.style.overflowY = "hidden";
+	divModal.classList.remove("hidden");
+};
+
+function hideModal(){
+	body.style.overflowY = "scroll";
+	divModal.classList.add("hidden");
 };

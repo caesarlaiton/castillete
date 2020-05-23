@@ -8,14 +8,18 @@
 	@apply text-xs text-gray-500 bg-gray-500 shadow
 }
 
-.bg-black-opacity-75 {
-  background-color: rgba(0,0,0,.75);
+button.modal:hover span, button.modal:focus span {
+	display: block;
 }
 
-.grid-custom-1-cols-2 {
-	grid-template-columns: minmax(0, .25fr) minmax(0, 1.75fr);
+button.modal:hover img, button.modal:focus img{
+	opacity: .9;
 }
 
-.grid-custom-2-cols-2 {
-	grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr);
+a.nav:hover div, a.nav:focus div {
+	width: 100%;
+}
+
+a.nav div {
+	transition: width .2s;
 }
