@@ -6,11 +6,11 @@
 
 		{{/* START img modal. */}}
 
-		<div class="hidden fixed top-0 left-0 w-screen h-screen bg-black z-20 flex flex-col justify-center modal">
+		<div style="background-color: rgba(0,0,0,.50)" class="hidden fixed top-0 left-0 w-screen h-screen bg-black z-20 modal flex justify-center items-center">
 
-				<button type="button" class="self-end text-gray-100 ">X</button>
+				<img class="w-64 h-64 modal" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
 
-				<img class="mx-auto" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
+				<button type="button" class="absolute top-0 right-0 mt-4 mr-4 text-3xl text-gray-100" tabindex="0">X</button>
 
 		</div>
 
@@ -89,7 +89,7 @@
 
 								<button type="button" class="flex justify-center items-center modal" tabindex="0">
 
-									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="shadow pointer-events-none" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ"></div>
+									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="shadow pointer-events-none" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ" width="320" height="240"></div>
 
 									<span class="hidden bg-gray-300 absolute font-bold text-gray-100 pointer-events-none"><img class="w-16 h-16" src="/zoom-in.svg"></span>
 
@@ -151,7 +151,13 @@
 
 		{{ else }}
 
-			<p class="text-center">There aren't paintings available</p>
+			<section class="text-center">
+
+				<img class="w-64 h-64 mb-4 mx-auto" src="/portfolio/undraw_image_upload_wqh3.svg">
+
+				<a class="p-4 opacity-75 hover:opacity-100" href="#"><span class="p-2 bg-gray-500 shadow rounded text-gray-100 font-bold">Upload content</span></a>
+
+			</section>
 
 		{{ end }}
 

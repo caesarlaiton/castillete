@@ -8,14 +8,6 @@
 	@apply text-xs text-gray-500 bg-gray-500 shadow
 }
 
-button.modal:hover span, button.modal:focus span {
-	display: block;
-}
-
-button.modal:hover img, button.modal:focus img{
-	opacity: .9;
-}
-
 a.nav:hover div, a.nav:focus div {
 	width: 100%;
 }

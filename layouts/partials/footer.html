@@ -26,7 +26,7 @@
 
 </footer>
 
-{{ if or (eq .Kind "section") (eq .Kind "taxonomy") }}
+{{ if and (.Pages) (or (eq .Kind "section") (eq .Kind "taxonomy")) }}
 
 	<span class="sm:hidden">&nbsp;</span>
 

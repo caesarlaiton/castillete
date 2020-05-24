@@ -3,15 +3,30 @@
 const body = document.querySelector("body"),
 	aside = document.querySelector("aside"),
 	tagsBtn = document.querySelector(".tagsBtn"),
-	btnModal = document.querySelector("button.modal"),
-	divModal = document.querySelector("div.modal");
+	btnsModal = document.querySelectorAll("button.modal"),
+	imgModal = document.querySelector("img.modal"),
+	divModal = document.querySelector("div.modal"),
+	exitModal = document.querySelector("div.modal button");
 
-let counter = 0;
+let counter = 0,
+	actualBtn = "";
 
 window.addEventListener("keydown", event => checkKey(event));
 divModal.addEventListener("click", event => checkClick(event));
-btnModal.addEventListener("click", showModal);
 tagsBtn.addEventListener("click", checkCounter);
+
+btnsModal.forEach(btnModal => btnModal.addEventListener("click", function(){ showModal(btnModal) }));
+
+btnsModal.forEach(btnModal => btnModal.addEventListener("mouseover", function(){
+	console.log(btnModal);
+	btnModal.firstElementChild.firstElementChild.classList.add("opacity-75");
+	btnModal.lastElementChild.classList.remove("hidden");
+}));
+
+btnsModal.forEach(btnModal => btnModal.addEventListener("mouseout", function(){
+	btnModal.firstElementChild.firstElementChild.classList.remove("opacity-75");
+	btnModal.lastElementChild.classList.add("hidden")
+}));
 
 function checkCounter(){
 	counter ? hideTags() : showTags();
@@ -49,12 +64,24 @@ function hideTags(){
 	counter = 0;
 };
 
-function showModal(){
+function showModal(btnModal){
+	actualBtn = btnModal;
+	imgModal.src = btnModal.firstElementChild.firstElementChild.src;
 	body.style.overflowY = "hidden";
 	divModal.classList.remove("hidden");
+	exitModal.focus();
 };
 
 function hideModal(){
 	body.style.overflowY = "scroll";
 	divModal.classList.add("hidden");
+	actualBtn.focus();
+	console.log(actualBtn);
+	actualBtn.lastElementChild.classList.add("hidden");
 };
+
+exitModal.addEventListener("keydown", event => {
+	if (event.key === "Tab"){
+		event.preventDefault();
+	};
+});
