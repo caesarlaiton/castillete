@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-	<main class="px-2 w-full max-w-screen-lg flex-grow">
+	<main class="mb-16 px-2 w-full max-w-screen-lg flex-grow">
 
 
 
@@ -8,7 +8,7 @@
 
 		<div style="background-color: rgba(0,0,0,.50)" class="hidden fixed top-0 left-0 w-screen h-screen bg-black z-20 modal flex justify-center items-center">
 
-				<img class="w-64 h-64 modal" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
+				<img class="w-64 h-64 modal">
 
 				<button type="button" class="absolute top-0 right-0 mt-4 mr-4 text-3xl text-gray-100" tabindex="0">X</button>
 
@@ -18,7 +18,9 @@
 
 
 
-		{{/* IF there are content available, display this. */}}
+		{{/* If there are content available: */}}
+
+		{{/* START main content. */}}
 
 		{{ if .Pages }}
 
@@ -89,15 +91,15 @@
 
 								<button type="button" class="flex justify-center items-center modal" tabindex="0">
 
-									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="shadow pointer-events-none" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ" width="320" height="240"></div>
+									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="shadow pointer-events-none" src="{{ .Params.img }}" width="320" height="240" loading="lazy"></div>
 
-									<span class="hidden bg-gray-300 absolute font-bold text-gray-100 pointer-events-none"><img class="w-16 h-16" src="/zoom-in.svg"></span>
+									<span class="hidden absolute font-bold pointer-events-none"><img class="w-16 h-16" src="/zoom-in.svg"></span>
 
 								</button>
 
 							<div class="m-4">
 
-								<h3>{{ .Title }}</h3>
+								<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
 
 								<ul class="flex flex-wrap">
 
@@ -105,7 +107,7 @@
 
 									{{ if eq $kind "section" }}
 
-										<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+										<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
 
 									{{ else }}
 
@@ -141,13 +143,21 @@
 
 
 
-			{{/* Button to display tags in small screens. */}}
+			{{/* START button to display tags in small screens. */}}
 
-			<button class="p-1 bg-gray-500 sm:hidden font-bold text-gray-100 shadow opacity-75 hover:opacity-100 fixed bottom-0 left-0 w-full text-center z-10 tagsBtn" href="/portfolio/tags/" type="button">Tags</button>
+			<button class="p-1 bg-gray-500 sm:hidden font-bold text-gray-100 shadow opacity-75 hover:opacity-100 focus:opacity-100 fixed bottom-0 left-0 w-full text-center z-10 tagsBtn" href="/portfolio/tags/" type="button">Tags</button>
+
+			{{/* END button to display tags in small screens. */}}
 
 
 
-		{{/* If there aren't content available, display this. */}}
+		{{/* END main content. */}}
+
+
+
+		{{/* If there are not content available: */}}
+
+		{{/* START alternative content. */}}
 
 		{{ else }}
 
@@ -160,6 +170,10 @@
 			</section>
 
 		{{ end }}
+
+		{{/* END alternative content. */}}
+
+
 
 	</main>
 

@@ -1,87 +1,115 @@
 "use strict";
 
-const body = document.querySelector("body"),
-	aside = document.querySelector("aside"),
-	tagsBtn = document.querySelector(".tagsBtn"),
-	btnsModal = document.querySelectorAll("button.modal"),
-	imgModal = document.querySelector("img.modal"),
-	divModal = document.querySelector("div.modal"),
-	exitModal = document.querySelector("div.modal button");
+const body = document.querySelector("body");
 
-let counter = 0,
-	actualBtn = "";
+function tagsModal(){
 
-window.addEventListener("keydown", event => checkKey(event));
-divModal.addEventListener("click", event => checkClick(event));
-tagsBtn.addEventListener("click", checkCounter);
+	const	aside = document.querySelector("aside"),
+		tagsBtn = document.querySelector(".tagsBtn");
 
-btnsModal.forEach(btnModal => btnModal.addEventListener("click", function(){ showModal(btnModal) }));
+	let counter = 0;
 
-btnsModal.forEach(btnModal => btnModal.addEventListener("mouseover", function(){
-	console.log(btnModal);
-	btnModal.firstElementChild.firstElementChild.classList.add("opacity-75");
-	btnModal.lastElementChild.classList.remove("hidden");
-}));
+	// Hide tags when ESC is pressed and counter is not 0 (tags are being displayed).
+	window.addEventListener("keydown", event => {
+		if (event.key === "Escape" && counter) {
+			hideTags();
+		};
+	});
 
-btnsModal.forEach(btnModal => btnModal.addEventListener("mouseout", function(){
-	btnModal.firstElementChild.firstElementChild.classList.remove("opacity-75");
-	btnModal.lastElementChild.classList.add("hidden")
-}));
+	// When the tags button is clicked:
+	// hide tags when counter is 0 (tags are being displayed),
+	// show tags otherwise.
+	tagsBtn.addEventListener("click", () => {
+		counter ? hideTags() : showTags();
+	});
+	
+	function showTags(){
+		editClasses("add", "remove");
+		counter++;
+	};
 
-function checkCounter(){
-	counter ? hideTags() : showTags();
-};
+	function hideTags(){
+		editClasses("remove", "add");
+		counter = 0;
+	};
 
-function checkKey(event){
-	if (event.key === "Escape" && counter){
-		hideTags();
-	} else if (event.key === "Escape" && !(divModal.style.display)){
-		hideModal();
+	function editClasses(x, y){
+		aside.classList[x]("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
+		body.classList[x]("overflow-y-hidden");
+
+		tagsBtn.classList[y]("opacity-75");
+		aside.classList[y]("hidden");
 	};
 };
 
-function checkClick(event){
-	if (event.target.tagName === "IMG"){
-		return;
-	} else {
-		hideModal();
+function imgModal(){
+
+	const btnsModal = document.querySelectorAll("button.modal"),
+		imgModal = document.querySelector("img.modal"),
+		divModal = document.querySelector("div.modal"),
+		exitModal = document.querySelector("div.modal button");
+
+	let btnModalPressed = "";
+
+	// Hide image modal when ESC is pressed and the image modal is being displayed.
+	window.addEventListener("keydown", event => {
+		if (event.key === "Escape" && !(divModal.classList.contains("hidden")) ) {
+			hideImg();
+		};
+	});
+	
+	// Hide image modal when you click anywhere except the image modal being displayed.
+	divModal.addEventListener("click", event => {
+		if (event.target.tagName !== "IMG") {
+			hideImg();
+		};
+	});
+
+	// When the image modal is being displayed, you can't focus anything but the X button.
+	exitModal.addEventListener("keydown", event => {
+		if (event.key === "Tab") {
+			event.preventDefault();
+		};
+	});
+
+	// Replace image modal src by the image src of button pressed, display whole modal and focus exit button.
+	function showImg(btnModal){
+		btnModalPressed = btnModal;
+		imgModal.src = btnModal.firstElementChild.firstElementChild.src;
+		editClasses("add", "remove");
+		exitModal.focus();
 	};
-};
 
-function showTags(){
-	body.style.overflowY = "hidden";
-	tagsBtn.classList.remove("opacity-75");
-	aside.classList.add("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
-	aside.classList.remove("hidden");
-	counter++;
-};
-
-function hideTags(){
-	body.style.overflowY = "scroll";
-	tagsBtn.classList.add("opacity-75");
-	aside.classList.add("hidden");
-	aside.classList.remove("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
-	counter = 0;
-};
-
-function showModal(btnModal){
-	actualBtn = btnModal;
-	imgModal.src = btnModal.firstElementChild.firstElementChild.src;
-	body.style.overflowY = "hidden";
-	divModal.classList.remove("hidden");
-	exitModal.focus();
-};
-
-function hideModal(){
-	body.style.overflowY = "scroll";
-	divModal.classList.add("hidden");
-	actualBtn.focus();
-	console.log(actualBtn);
-	actualBtn.lastElementChild.classList.add("hidden");
-};
-
-exitModal.addEventListener("keydown", event => {
-	if (event.key === "Tab"){
-		event.preventDefault();
+	// Hide image modal, and re-focus button pressed.
+	function hideImg(){
+		btnModalPressed.focus();
+		editClasses("remove", "add");
+		editZoomClasses(btnModalPressed, "remove", "add");
 	};
-});
+
+	function editClasses(x, y){
+		body.classList[x]("overflow-y-hidden");
+
+		divModal.classList[y]("hidden");
+	};
+
+	function editZoomClasses(btnModal, x, y){
+		btnModal.firstElementChild.firstElementChild.classList[x]("opacity-75");
+
+		btnModal.lastElementChild.classList[y]("hidden");
+	};
+
+	// Add click, hover and focus events to every button that act as a source to the image modal.
+	btnsModal.forEach(btnModal => {
+
+		btnModal.addEventListener("click", () => showImg(btnModal) );
+
+		["mouseout", "blur"].forEach(event => btnModal.addEventListener(event, () => editZoomClasses(btnModal, "remove", "add") ));
+		["mouseover", "focus"].forEach(event => btnModal.addEventListener(event, () => editZoomClasses(btnModal, "add", "remove") ));
+
+	});
+
+};
+
+tagsModal();
+imgModal();
