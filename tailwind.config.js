@@ -1,5 +1,9 @@
 module.exports = {
 	theme: {
-		include: {}
+		extend: {
+			transitionProperty: {
+				"width": "width"
+			}
+		}
 	}
 }

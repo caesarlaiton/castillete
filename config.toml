@@ -1,11 +1,18 @@
-baseURL = "http://example.org/"
+baseURL = ""
 
 languageCode = "en-us"
 
 title = "Arthematics"
 
+enableRobotsTXT = true
+
 [taxonomies]
-  tag = "tags"
+	tag = "tags"
 
 [permalinks]
-  tags = "/portfolio/tag/:slug/"
+	tags = "/portfolio/tag/:slug/"
+
+[params]
+	description = "Mathematical beauty"
+	images = [".jpg"]
+	title = "Arthematics"

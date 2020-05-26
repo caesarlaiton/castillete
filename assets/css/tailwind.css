@@ -3,15 +3,3 @@
 @tailwind components;
 
 @tailwind utilities;
-
-.p {
-	@apply text-xs text-gray-500 bg-gray-500 shadow
-}
-
-a.nav:hover div, a.nav:focus div {
-	width: 100%;
-}
-
-a.nav div {
-	transition: width .2s;
-}

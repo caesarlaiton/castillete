@@ -5,7 +5,3 @@
 a.nav:hover div, a.nav:focus div {
 	width: 100%;
 }
-
-a.nav div {
-	transition: width .2s;
-}

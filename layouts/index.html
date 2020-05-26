@@ -1,24 +1,32 @@
 {{ define "main" }}
 	
-	<main class="px-2 max-w-screen-lg flex-grow">
+	<main class="max-w-screen-lg flex-grow">
 
-		<div class="h-full flex flex-wrap justify-between">
+		<div class="h-full flex flex-wrap justify-center lg:justify-between">
 
 
 
 			{{/* START personal information section. */}}
 
-			<section class="mx-auto max-w-md flex items-center"> 
+			<section class="max-w-xs mx-auto sm:max-w-md sm:mx-0 flex items-center"> 
 
 				<div>
 
-					<img class="w-32 h-32 mx-auto rounded-full" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
+					<img class="mx-auto rounded-full shadow" src="/png/armando-reveron.png" width="128" height="165">
 
-					<h3 class="my-2 text-center">Armando Reverón</h3>
+					<h3 class="mt-2 text-lg text-center">Armando Reverón</h3>
 
-					<p class="mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lectus massa, auctor in elit eget, tristique tempor est. Curabitur consequat quam sit amet dapibus pulvinar. Sed luctus non lacus id posuere. Donec eu augue blandit, euismod turpis sed, tempus metus. Pellentesque tincidunt et augue nec fringilla.</p>
+					<div class="mx-4 mt-2 mb-16">
+
+						<p class="pl-2 border-l-4 border-transparent text-sm">Venezuelan painter and sculptor.</p>
+
+						<p class="mt-10 pl-2 text-justify border-l-4 border-gray-500">While his mental health deteriorated throughout his life, his artistic abilities remained.</p>
+
+					</div>
 
 				</div>
+
+
 
 			</section>
 
@@ -28,21 +36,30 @@
 
 			{{/* START work features. */}}
 
-			<section class="mx-auto max-w-md w-full">
+			<section class="w-full max-w-xs mx-auto sm:max-w-md sm:mx-0">
 
-				<article class="mb-8 flex flex-wrap justify-between bg-white shadow">
-					<img class="w-full sm:w-40 shadow" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
-					<p class="m-4 sm:w-64">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
+				<article class="mb-10 flex flex-wrap justify-between bg-white shadow items-center">
+
+					<img class="max-w-xs sm:w-48 sm:h-40 shadow" src="/jpg/cocoteros-en-la-playa-320.jpg">
+
+					<p class="m-8 sm:w-48 mx-auto">Subtle play of light and shadows.</p>
+
 				</article>
 
-				<article class="mb-8 flex flex-wrap justify-between bg-white shadow">
-					<img class="w-full sm:w-40 shadow" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
-					<p class="m-4 sm:w-64 sm:order-first">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
+				<article class="mb-10 flex flex-wrap justify-between bg-white shadow items-center">
+
+					<img class="max-w-xs sm:w-48 sm:h-40 shadow" src="/jpg/la-cueva-320.jpg">
+
+					<p class="m-8 sm:w-48 mx-auto sm:order-first">Sensual and mysterious atmospheres.</p>
+
 				</article>
 
-				<article class="flex flex-wrap justify-between bg-white shadow">
-					<img class="w-full sm:w-40 shadow" src="https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text=λ">
-					<p class="m-4 sm:w-64">Vestibulum dapibus ipsum ac lorem semper iaculis. Ut ultrices velit sem, nec euismod risus placerat eget. Integer iaculis augue dolor, et eleifend libero vulputate sit amet. In gravida mollis semper.</p>
+				<article class="flex flex-wrap justify-between bg-white shadow items-center">
+
+					<img class="max-w-xs sm:w-48 sm:h-40 shadow" src="/jpg/amanecer-desde-punta-brisas-320.jpg">
+
+					<p class="m-8 sm:w-48 mx-auto">Obsessive interest in light.</p>
+
 				</article>
 
 			</section>
@@ -51,17 +68,49 @@
 
 
 
-			{{/* START portfolio link. */}}
+			{{/* START quote. */}}
 
-			<section class="my-16 w-full sm:pt-0 flex justify-center text-center">
+			<section class="my-32 w-full mx-auto sm:mx-0 items-center bg-white shadow flex flex-wrap">
 
-				<div>
+				<div class="flex-grow">
 
-					<p>Wanna see more?</p>
+					<blockquote class="max-w-xs sm:max-w-lg text-xl md:text-3xl mx-auto relative z-10">
 
-					<a class="m-2 p-4 block opacity-75 hover:opacity-100" href="/portfolio/"><span class="p-2 bg-gray-500 rounded shadow text-gray-100 font-bold">Portfolio</span></a>
+						<p><span class="text-6xl">"</span>I came here to find simplicity</p>
+
+						<p class="-mt-2 -mb-12 text-center">and</p>
+
+						<p class="text-right">I found reality.<span class="text-6xl">"</span></p>
+
+					</blockquote>
 
 				</div>
+
+				<div class="w-full mx-auto max-w-xs order-first sm:order-none relative">
+
+					<img class="w-full sm:mx-0 max-w-xs" src="/jpg/armando-reveron-painting.jpg">
+
+					<svg class="top-0 w-40 h-64 hidden sm:block absolute fill-current text-white" style="right: 240px" preserveAspectRatio="none" viewBox="0 0 100 100">
+
+						<polygon points="50,0 100,0 50,100 0,100">
+
+					</svg>
+
+				</div>
+
+			</section>
+
+			{{/* END quote. */}}
+
+
+
+			{{/* START portfolio link. */}}
+
+			<section class="mb-16 w-full sm:pt-0 text-center">
+
+				<p>Want to see more?</p>
+
+				<a class="p-4 opacity-75 inline-block hover:opacity-100 transition-opacity ease-linear duration-300" href="/portfolio/"><span class="p-2 bg-gray-500 rounded shadow text-gray-100 font-bold">Portfolio</span></a>
 
 			</section>
 

@@ -1,4 +1,4 @@
-<header class="py-2 mb-8">
+<header class="mb-4 py-2">
 
 	<nav>
 
@@ -8,7 +8,7 @@
 
 				<a class="p-4 block nav" href="/">Home
 
-					<div class="{{ if .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500"></div>
+					<div class="{{ if .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500 transition-width ease-in-out duration-500"></div>
 
 				</a>
 
@@ -18,7 +18,7 @@
 
 				<a class="p-4 block nav" href="/portfolio/">Portfolio
 
-					<div class="{{ if not .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500"></div>
+					<div class="{{ if not .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500 transition-width ease-in-out duration-500"></div>
 
 				</a>
 

@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-	<main class="mb-16 px-2 w-full max-w-screen-lg flex-grow">
+	<main class="px-2 w-full max-w-screen-lg flex-grow">
 
 
 
@@ -47,13 +47,13 @@
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
-								<li><a class="pl-2 py-2 break-words block opacity-75 hover:opacity-100 hover:text-gray-500" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
+								<li><a class="pl-2 py-2 break-words block opacity-75 hover:opacity-100 hover:text-gray-500 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
 
 							{{ end }}
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 opacity-75 block hover:opacity-100 hover:text-gray-500" href="/portfolio/">All <span class="text-gray-500">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 opacity-75 block hover:opacity-100 hover:text-gray-500 focus:opacity-100 transition-opacity ease-linear duration-300" href="/portfolio/">All <span class="text-gray-500">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></a></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
@@ -63,7 +63,7 @@
 
 								{{ else }}
 
-									<li><a class="pl-2 py-2 block break-words opacity-75 hover:opacity-100 hover:text-gray-500" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
+									<li><a class="pl-2 py-2 block break-words opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 hover:text-gray-500" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
 
 								{{ end }}
 
@@ -93,7 +93,7 @@
 
 									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="shadow pointer-events-none" src="{{ .Params.img }}" width="320" height="240" loading="lazy"></div>
 
-									<span class="hidden absolute font-bold pointer-events-none"><img class="w-16 h-16" src="/zoom-in.svg"></span>
+									<span class="hidden absolute font-bold pointer-events-none"><img class="w-16 h-16" src="/svg/zoom-in.svg"></span>
 
 								</button>
 
@@ -107,7 +107,7 @@
 
 									{{ if eq $kind "section" }}
 
-										<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
+										<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
 
 									{{ else }}
 
@@ -117,7 +117,7 @@
 
 										{{ else }}
 
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
 
 										{{ end }}
 
@@ -145,7 +145,7 @@
 
 			{{/* START button to display tags in small screens. */}}
 
-			<button class="p-1 bg-gray-500 sm:hidden font-bold text-gray-100 shadow opacity-75 hover:opacity-100 focus:opacity-100 fixed bottom-0 left-0 w-full text-center z-10 tagsBtn" href="/portfolio/tags/" type="button">Tags</button>
+			<button class="p-1 bg-gray-500 sm:hidden font-bold text-gray-100 shadow opacity-75 hover:opacity-100 focus:opacity-100 fixed bottom-0 left-0 w-full text-center z-10 tagsBtn transition-opacity ease-linear duration-300" href="/portfolio/tags/" type="button">Tags</button>
 
 			{{/* END button to display tags in small screens. */}}
 
@@ -163,9 +163,9 @@
 
 			<section class="text-center">
 
-				<img class="w-64 h-64 mb-4 mx-auto" src="/portfolio/undraw_image_upload_wqh3.svg">
+				<img class="w-64 h-64 mb-8 mx-auto" src="/svg/undraw_image_upload_wqh3.svg">
 
-				<a class="p-4 opacity-75 hover:opacity-100" href="#"><span class="p-2 bg-gray-500 shadow rounded text-gray-100 font-bold">Upload content</span></a>
+				<a class="p-4 opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="#"><span class="p-2 bg-gray-500 shadow rounded text-gray-100 font-bold">Upload content</span></a>
 
 			</section>
 
@@ -177,6 +177,7 @@
 
 	</main>
 
-	<script src="/portfolio/main.js"></script>
+	{{ $js := resources.Get "js/main.js" }}
+	<script src="{{ $js.RelPermalink }}"></script>
 
 {{ end }}
