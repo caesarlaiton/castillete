@@ -4,9 +4,7 @@ title = "{{ replace .Name "-" " " | title }}"
 
 date = {{ .Date }}
 
-img = "/jpg/{{ .Name }}-256.jpg"
-
-tags = ["fantasy"]
+tags = []
 
 [_build]
 	render = false

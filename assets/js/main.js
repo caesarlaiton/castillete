@@ -16,6 +16,12 @@ function tagsModal(){
 		};
 	});
 
+	window.addEventListener("resize", () => {
+		if (counter && window.innerWidth >= 640){
+			hideTags();
+		};
+	});
+
 	// When the tags button is clicked:
 	// hide tags when counter is 0 (tags are being displayed),
 	// show tags otherwise.
@@ -34,7 +40,7 @@ function tagsModal(){
 	};
 
 	function editClasses(x, y){
-		aside.classList[x]("fixed", "top-0", "left-0", "w-screen", "h-screen", "bg-gray-100", "z-10", "p-4");
+		aside.classList[x]("top-0", "w-screen", "h-screen", "z-10", "p-4");
 		body.classList[x]("overflow-y-hidden");
 
 		tagsBtn.classList[y]("opacity-75");
@@ -76,11 +82,7 @@ function imgModal(){
 	function showImg(btnModal){
 		btnModalPressed = btnModal;
 
-		let src = btnModal.firstElementChild.firstElementChild.src,
-			position = src.search("-256"),
-			fullSrc = src.slice(0, position) + src.slice(position + 4);
-
-		imgModal.src = fullSrc;
+		imgModal.src = btnModal.firstElementChild.firstElementChild.dataset.src;
 		editClasses("add", "remove");
 		exitModal.focus();
 	};

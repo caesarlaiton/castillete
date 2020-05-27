@@ -27,13 +27,13 @@
 			{{ $title := .Title }}
 			{{ $kind := .Kind }}
 
-			<div class="flex justify-around">
+			<div class="relative flex justify-center">
 
 
 
 				{{/* START vertical tags navigation. */}}
 
-				<aside class="w-32 font-bold hidden sm:block">
+				<aside class="fixed top-50 left-0 pl-8 md:ml-12 lg:ml-16 w-32 font-bold hidden sm:block">
 
 					<h3 class="mb-2 text-sm">Tags</h3>
 
@@ -43,7 +43,7 @@
 
 						{{ if eq .Kind "section" }}
 
-							<li><a class="pl-2 py-2 block text-gray-500">All <span class="text-gray-500">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</a></span></li>
+							<li><a class="pl-2 py-2 block text-gray-500">All <span class="text-gray-500">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</a></span></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
@@ -53,7 +53,7 @@
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 opacity-75 block hover:opacity-100 hover:text-gray-500 focus:opacity-100 transition-opacity ease-linear duration-300" href="/portfolio/">All <span class="text-gray-500">({{ len (where .Site.RegularPages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 opacity-75 block hover:opacity-100 hover:text-gray-500 focus:opacity-100 transition-opacity ease-linear duration-300" href="/portfolio/">All <span class="text-gray-500">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
@@ -83,7 +83,7 @@
 
 				{{/* START main content grid. */}}
 
-				<div class="w-full grid gap-4 grid-cols-1 sm:ml-4 md:grid-cols-2 lg:grid-cols-3">
+				<div class="w-full sm:ml-48 max-w-xs md:max-w-screen-sm lg:max-w-none grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 self-start">
 
 					{{ range .Pages }}
 
@@ -91,13 +91,19 @@
 
 								<button type="button" class="flex justify-center items-center modal" tabindex="0">
 
-									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="w-64 h-48 shadow pointer-events-none" src="{{ .Params.img }}" width="320" height="240" loading="lazy"></div>
+									{{ range .Resources.ByType "image" }}
+
+										{{ $img := .Resize "256x" }}
+
+										<div class="w-full bg-black"><img class="w-64 h-48 shadow pointer-events-none" src="{{ $img.RelPermalink }}" width="320" height="240" data-src="{{ .Permalink }}" loading="lazy"></div>
+
+									{{ end }}
 
 									<span class="hidden absolute font-bold pointer-events-none"><img class="w-16 h-16" src="/svg/zoom-in.svg"></span>
 
 								</button>
 
-							<div class="m-4">
+							<div class="m-4 mb-8">
 
 								<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
 
