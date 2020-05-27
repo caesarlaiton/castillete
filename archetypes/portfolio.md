@@ -1,8 +1,10 @@
 +++
 
-title: "{{ replace .Name "-" " " | title }}"
+title = "{{ replace .Name "-" " " | title }}"
 
-img = "https://via.placeholder.com/320x240/CBD5E0/A0AEC0?text={{ .Name }}"
+date = {{ .Date }}
+
+img = "/jpg/{{ .Name }}-256.jpg"
 
 tags = ["fantasy"]
 

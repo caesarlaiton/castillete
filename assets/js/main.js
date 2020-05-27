@@ -75,7 +75,12 @@ function imgModal(){
 	// Replace image modal src by the image src of button pressed, display whole modal and focus exit button.
 	function showImg(btnModal){
 		btnModalPressed = btnModal;
-		imgModal.src = btnModal.firstElementChild.firstElementChild.src;
+
+		let src = btnModal.firstElementChild.firstElementChild.src,
+			position = src.search("-256"),
+			fullSrc = src.slice(0, position) + src.slice(position + 4);
+
+		imgModal.src = fullSrc;
 		editClasses("add", "remove");
 		exitModal.focus();
 	};

@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-	<main class="px-2 w-full max-w-screen-lg flex-grow">
+	<main class="w-full max-w-screen-lg flex-grow">
 
 
 
@@ -8,7 +8,7 @@
 
 		<div style="background-color: rgba(0,0,0,.50)" class="hidden fixed top-0 left-0 w-screen h-screen bg-black z-20 modal flex justify-center items-center">
 
-				<img class="w-64 h-64 modal">
+				<img class="max-w-screen-md modal" style="max-height: 576px">
 
 				<button type="button" class="absolute top-0 right-0 mt-4 mr-4 text-3xl text-gray-100" tabindex="0">X</button>
 
@@ -91,7 +91,7 @@
 
 								<button type="button" class="flex justify-center items-center modal" tabindex="0">
 
-									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="shadow pointer-events-none" src="{{ .Params.img }}" width="320" height="240" loading="lazy"></div>
+									<div class="w-full bg-black"><img id="{{ anchorize .Title }}" class="w-64 h-48 shadow pointer-events-none" src="{{ .Params.img }}" width="320" height="240" loading="lazy"></div>
 
 									<span class="hidden absolute font-bold pointer-events-none"><img class="w-16 h-16" src="/svg/zoom-in.svg"></span>
 
