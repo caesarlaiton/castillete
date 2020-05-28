@@ -26,8 +26,12 @@
 
 	{{ $customCSS := resources.Get "css/custom.css" }}
 
-	{{ $style := slice $tailwind $customCSS | resources.Concat "css/style.css" }}
+	<!--{{ $style := slice $tailwind $customCSS | resources.Concat "css/style.css" }}
 
-	<link rel="stylesheet" href="{{ $style.Permalink }}">
+	<link rel="stylesheet" href="{{ $style.Permalink }}">-->
+
+	<link rel="stylesheet" href="{{ $tailwind.Permalink }}">
+
+	<link rel="stylesheet" href="{{ $customCSS.Permalink }}">
 
 </head>

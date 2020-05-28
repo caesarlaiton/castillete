@@ -5,3 +5,11 @@
 a.nav:hover div, a.nav:focus div {
 	width: 100%;
 }
+
+img.modal {
+	transition: transform 500ms, opacity 1000ms;
+}
+
+.bg-black-opacity-75 {
+	background-color: rgba(0, 0, 0, .75);
+}

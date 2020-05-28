@@ -55,7 +55,7 @@ function imgModal(){
 		divModal = document.querySelector("div.modal"),
 		exitModal = document.querySelector("div.modal button");
 
-	let btnModalPressed = "";
+	let btnModalNow = "";
 
 	// Hide image modal when ESC is pressed and the image modal is being displayed.
 	window.addEventListener("keydown", event => {
@@ -80,40 +80,63 @@ function imgModal(){
 
 	// Replace image modal src by the image src of button pressed, display whole modal and focus exit button.
 	function showImg(btnModal){
-		btnModalPressed = btnModal;
+		btnModalNow = btnModal;
 
-		imgModal.src = btnModal.firstElementChild.firstElementChild.dataset.src;
-		editClasses("add", "remove");
+		imgModal.src = btnModal.firstElementChild.dataset.src;
+
+		body.classList.toggle("overflow-y-hidden");
+		divModal.classList.toggle("hidden");
+
 		exitModal.focus();
 	};
 
 	// Hide image modal, and re-focus button pressed.
 	function hideImg(){
-		btnModalPressed.focus();
-		editClasses("remove", "add");
-		editZoomClasses(btnModalPressed, "remove", "add");
+		btnModalNow.focus();
+
+		// If the image you're hiding didn't load:
+		// toggle classes to not bug the next image animation.
+		if (!(imgModal.complete)){
+			transitionClasses();
+		};
+
+		divModal.classList.toggle("bg-black-opacity-75");
+
+		transitionClasses();
+
+		body.classList.toggle("overflow-y-hidden");
+
+		// Let animation finish before hiding modal.
+		setTimeout(() => {
+			divModal.classList.toggle("hidden");
+
+			btnModalNow.firstElementChild.classList.remove("opacity-75");
+
+			imgModal.src = "";
+		}, 1000);
+
 	};
 
-	function editClasses(x, y){
-		body.classList[x]("overflow-y-hidden");
-
-		divModal.classList[y]("hidden");
+	// Image animation classes.
+	function transitionClasses(){
+		// divModal.classList.toggle("bg-black-opacity-75");
+		divModal.firstElementChild.classList.toggle("translate-y-64");
+		divModal.firstElementChild.classList.toggle("opacity-0");
 	};
 
-	function editZoomClasses(btnModal, x, y){
-		btnModal.firstElementChild.firstElementChild.classList[x]("opacity-75");
-
-		btnModal.lastElementChild.classList[y]("hidden");
-	};
-
-	// Add click, hover and focus events to every button that act as a source to the image modal.
 	btnsModal.forEach(btnModal => {
+		btnModal.addEventListener("click", () => {
+			showImg(btnModal);
 
-		btnModal.addEventListener("click", () => showImg(btnModal) );
+			divModal.classList.toggle("bg-black-opacity-75");
 
-		["mouseout", "blur"].forEach(event => btnModal.addEventListener(event, () => editZoomClasses(btnModal, "remove", "add") ));
-		["mouseover", "focus"].forEach(event => btnModal.addEventListener(event, () => editZoomClasses(btnModal, "add", "remove") ));
+			// Start animation when the image is completely loaded.
+			imgModal.addEventListener("load", transitionClasses);
+		});
 
+		["mouseout", "blur"].forEach(event => btnModal.addEventListener(event, () => btnModal.firstElementChild.classList.remove("opacity-75") ));
+
+		["mouseover", "focus"].forEach(event => btnModal.addEventListener(event, () => btnModal.firstElementChild.classList.add("opacity-75") ));
 	});
 
 };
