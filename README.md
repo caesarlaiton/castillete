@@ -1,2 +1,2 @@
-# Arthematics
-A website about mathematical beauty.
+# Castillete
+A website about the Venezuelan painter Armando Reverón.
