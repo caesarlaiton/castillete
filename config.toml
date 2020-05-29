@@ -2,7 +2,7 @@ baseURL = ""
 
 languageCode = "en-us"
 
-title = "Arthematics"
+title = "Castillete"
 
 enableRobotsTXT = true
 
@@ -13,6 +13,6 @@ enableRobotsTXT = true
 	tags = "/portfolio/tag/:slug/"
 
 [params]
-	description = "Mathematical beauty"
+	description = "El Castillete of Armando Reverón"
 	images = [".jpg"]
-	title = "Arthematics"
+	title = "Castillete"

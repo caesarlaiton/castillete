@@ -7,9 +7,16 @@ a.nav:hover div, a.nav:focus div {
 }
 
 img.modal {
-	transition: transform 500ms, opacity 1000ms;
+	transition: transform 300ms, opacity 500ms;
 }
 
 .bg-black-opacity-75 {
 	background-color: rgba(0, 0, 0, .75);
+}
+
+.test {
+	background-color: pink;
+	color: pink;
+	width: 420px;
+	height: 112px;
 }

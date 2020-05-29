@@ -5,7 +5,9 @@ const body = document.querySelector("body");
 function tagsModal(){
 
 	const	aside = document.querySelector("aside"),
+		tagsTitle = document.querySelector(".tagsTitle"),
 		tagsBtn = document.querySelector(".tagsBtn");
+
 
 	let counter = 0;
 
@@ -17,7 +19,8 @@ function tagsModal(){
 	});
 
 	window.addEventListener("resize", () => {
-		if (counter && window.innerWidth >= 640){
+		if (counter && window.innerWidth >= 480){
+			body.classList.remove("overflow-y-hidden");
 			hideTags();
 		};
 	});
@@ -26,25 +29,34 @@ function tagsModal(){
 	// hide tags when counter is 0 (tags are being displayed),
 	// show tags otherwise.
 	tagsBtn.addEventListener("click", () => {
-		counter ? hideTags() : showTags();
+		if (counter){
+			aside.classList.add("opacity-0");
+			body.classList.remove("overflow-y-hidden");
+			setTimeout(hideTags, 300);
+		} else {
+			showTags();
+			aside.classList.remove("opacity-0");
+		};
 	});
 	
 	function showTags(){
+		body.classList.add("overflow-y-hidden");
 		editClasses("add", "remove");
 		counter++;
+		tagsTitle.focus();
 	};
 
 	function hideTags(){
 		editClasses("remove", "add");
 		counter = 0;
+		tagsBtn.blur();
 	};
 
 	function editClasses(x, y){
-		aside.classList[x]("top-0", "w-screen", "h-screen", "z-10", "p-4");
-		body.classList[x]("overflow-y-hidden");
+		aside.classList[x]("fixed", "top-0", "w-screen", "h-screen", "z-10", "p-4", "bg-gray-100");
 
 		tagsBtn.classList[y]("opacity-75");
-		aside.classList[y]("hidden");
+		aside.classList[y]("hidden", "mr-16");
 	};
 };
 
@@ -100,6 +112,8 @@ function imgModal(){
 			transitionClasses();
 		};
 
+		btnModalNow.firstElementChild.classList.remove("opacity-75");
+
 		divModal.classList.toggle("bg-black-opacity-75");
 
 		transitionClasses();
@@ -110,10 +124,8 @@ function imgModal(){
 		setTimeout(() => {
 			divModal.classList.toggle("hidden");
 
-			btnModalNow.firstElementChild.classList.remove("opacity-75");
-
 			imgModal.src = "";
-		}, 1000);
+		}, 500);
 
 	};
 
@@ -122,6 +134,7 @@ function imgModal(){
 		// divModal.classList.toggle("bg-black-opacity-75");
 		divModal.firstElementChild.classList.toggle("translate-y-64");
 		divModal.firstElementChild.classList.toggle("opacity-0");
+		exitModal.classList.toggle("opacity-0");
 	};
 
 	btnsModal.forEach(btnModal => {
