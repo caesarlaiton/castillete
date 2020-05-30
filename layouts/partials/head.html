@@ -24,6 +24,14 @@
 
 	{{ $style := resources.Get "css/style.css" | resources.PostCSS }}
 
+	{{ $isProd :=  eq hugo.Environment "production" }}
+
+	{{ if $isProd }}
+
+		{{ $style = $style | minify | fingerprint }}
+
+	{{ end }}
+
 	<link rel="stylesheet" href="{{ $style.Permalink }}">
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
