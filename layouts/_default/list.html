@@ -252,7 +252,7 @@
 	</main>
 
 	{{/* $js := resources.Get "js/main.js" | babel */}}
-	{{ $js := resources.Get "js/main.js" | babel }}
+	{{ $js := resources.Get "js/main.js" }}
 
 	{{ $isProd :=  eq hugo.Environment "production" }}
 
