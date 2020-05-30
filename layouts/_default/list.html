@@ -251,8 +251,7 @@
 
 	</main>
 
-	{{/* $js := resources.Get "js/main.js" | babel */}}
-	{{ $js := resources.Get "js/main.js" }}
+	{{ $js := resources.Get "js/main.js" | babel }}
 	<script src="{{ $js.RelPermalink }}"></script>
 
 {{ end }}
