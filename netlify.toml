@@ -1,6 +1,6 @@
 [build]
 publish = "public"
-command = "hugo --gc && gulp critical minify"
+command = "npm install && hugo --gc && gulp critical minify"
 
 [context.production.environment]
 HUGO_VERSION = "0.71.1"
