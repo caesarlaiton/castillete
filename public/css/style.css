@@ -19056,6 +19056,33 @@ video {
   transition-delay: 1000ms;
 }
 
+.p {
+  font-size: 0.75rem;
+  --text-opacity: 1;
+  color: #a0aec0;
+  color: rgba(160, 174, 192, var(--text-opacity));
+  --bg-opacity: 1;
+  background-color: #a0aec0;
+  background-color: rgba(160, 174, 192, var(--bg-opacity));
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)
+}
+
+a.nav:hover div, a.nav:focus div {
+  width: 100%;
+}
+
+img.modal {
+  transition: transform 300ms, opacity 500ms;
+}
+
+.bg-black-opacity-75 {
+  background-color: rgba(0, 0, 0, .75);
+}
+
+.h-screen-minus {
+  height: calc(100vh - 2rem);
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
@@ -111199,26 +111226,4 @@ video {
   .xs\:delay-1000 {
     transition-delay: 1000ms;
   }
-}
-.p {
-	@apply text-xs text-gray-500 bg-gray-500 shadow
-}
-
-a.nav:hover div, a.nav:focus div {
-	width: 100%;
-}
-
-img.modal {
-	transition: transform 300ms, opacity 500ms;
-}
-
-.bg-black-opacity-75 {
-	background-color: rgba(0, 0, 0, .75);
-}
-
-.test {
-	background-color: pink;
-	color: pink;
-	width: 420px;
-	height: 112px;
 }

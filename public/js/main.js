@@ -10,6 +10,7 @@ function tagsModal() {
 
   window.addEventListener("keydown", function (event) {
     if (event.key === "Escape" && counter) {
+      body.classList.remove("overflow-y-hidden");
       hideTags();
     }
 
@@ -57,7 +58,7 @@ function tagsModal() {
   ;
 
   function editClasses(x, y) {
-    aside.classList[x]("fixed", "top-0", "w-screen", "h-screen", "z-10", "p-4", "bg-gray-100");
+    aside.classList[x]("fixed", "top-0", "w-screen", "h-screen-minus", "z-10", "p-4", "bg-gray-100", "overflow-y-auto");
     tagsBtn.classList[y]("opacity-75");
     aside.classList[y]("hidden", "mr-16");
   }
@@ -100,7 +101,7 @@ function imgModal() {
 
   function showImg(btnModal) {
     btnModalNow = btnModal;
-    imgModal.src = btnModal.firstElementChild.dataset.src;
+    imgModal.src = btnModal.firstElementChild.dataset.modal;
     body.classList.toggle("overflow-y-hidden");
     divModal.classList.toggle("hidden");
     exitModal.focus();
