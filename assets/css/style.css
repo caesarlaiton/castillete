@@ -1,3 +1,9 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 .p {
 	@apply text-xs text-gray-500 bg-gray-500 shadow
 }
@@ -14,9 +20,6 @@ img.modal {
 	background-color: rgba(0, 0, 0, .75);
 }
 
-.test {
-	background-color: pink;
-	color: pink;
-	width: 420px;
-	height: 112px;
+.h-screen-minus {
+	height: calc(100vh - 2rem);
 }

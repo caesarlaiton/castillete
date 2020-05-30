@@ -14,5 +14,5 @@ enableRobotsTXT = true
 
 [params]
 	description = "El Castillete of Armando Reverón"
-	images = [".jpg"]
+	images = ["/jpg/chinita-de-el-playon.jpg"]
 	title = "Castillete"

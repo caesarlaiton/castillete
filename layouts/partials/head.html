@@ -22,11 +22,7 @@
 
 	{{ template "_internal/google_analytics.html" . }}
 
-	{{ $tailwind := resources.Get "css/tailwind.css" | resources.PostCSS }}
-
-	{{ $customCSS := resources.Get "css/custom.css" }}
-
-	{{ $style := slice $tailwind $customCSS | resources.Concat "css/style.css" }}
+	{{ $style := resources.Get "css/style.css" | resources.PostCSS }}
 
 	<link rel="stylesheet" href="{{ $style.Permalink }}">
 
@@ -37,5 +33,7 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
+
+	{{ if .IsHome }} <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> {{ end }}
 
 </head>

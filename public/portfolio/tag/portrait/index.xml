@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portrait on Castillete</title>
+    <link>/portfolio/tag/portrait/</link>
+    <description>Recent content in Portrait on Castillete</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2020 15:17:59 -0400</lastBuildDate>
+    
+	<atom:link href="/portfolio/tag/portrait/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rostro blanco</title>
+      <link></link>
+      <pubDate>Wed, 27 May 2020 15:17:59 -0400</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mujer con mantilla</title>
+      <link></link>
+      <pubDate>Wed, 27 May 2020 15:16:44 -0400</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Las indias</title>
+      <link></link>
+      <pubDate>Wed, 27 May 2020 15:14:53 -0400</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>La cueva</title>
+      <link></link>
+      <pubDate>Wed, 27 May 2020 15:13:38 -0400</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Chinita de El Playón</title>
+      <link></link>
+      <pubDate>Wed, 27 May 2020 15:09:53 -0400</pubDate>
+      
+      <guid></guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
