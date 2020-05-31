@@ -14,7 +14,8 @@ gulp.task("critical", () => {
 			dimensions: [
 					{height: 768, width: 1366}
 			],
-			minify: true
+			minify: true,
+			timeout: 30000
     }))
     .on("error", err => {
       log.error(err.message);
