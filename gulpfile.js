@@ -7,14 +7,15 @@ gulp.task("critical", () => {
     .src("public/**/*.html")
     .pipe(critical({
       base: "./",
-      inline: true,
+      inline: false,
       css: [
         "public/css/style.css"
       ],
 			dimensions: [
 					{height: 768, width: 1366}
 			],
-			minify: true
+			minify: true,
+			timeout: 30000
     }))
     .on("error", err => {
       log.error(err.message);
