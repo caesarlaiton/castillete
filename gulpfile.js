@@ -4,7 +4,7 @@ const gulp = require("gulp"),
 
 gulp.task("critical", () => {
   return gulp
-    .src("layouts/**/*.html")
+    .src("public/**/*.html")
     .pipe(critical({
       base: "./",
       inline: true,
