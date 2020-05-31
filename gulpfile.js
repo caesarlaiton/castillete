@@ -6,11 +6,15 @@ gulp.task("critical", () => {
   return gulp
     .src("public/**/*.html")
     .pipe(critical({
-      base: "/",
+      base: "./",
       inline: true,
       css: [
         "public/css/style.css"
-      ]
+      ],
+			dimensions: [
+					{height: 768, width: 1366}
+			],
+			minify: true
     }))
     .on("error", err => {
       log.error(err.message);
