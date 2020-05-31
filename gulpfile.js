@@ -7,18 +7,17 @@ gulp.task("critical", () => {
     .src("public/**/*.html")
     .pipe(critical({
       base: "./",
-      inline: false,
+      inline: true,
       css: [
         "public/css/style.css"
       ],
 			dimensions: [
 					{height: 768, width: 1366}
 			],
-			minify: true,
-			timeout: 30000
+			minify: true
     }))
     .on("error", err => {
       log.error(err.message);
     })
-    .pipe(gulp.dest("public/css/critical.css"));
+    .pipe(gulp.dest("public"));
 });
