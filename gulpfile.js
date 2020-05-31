@@ -7,7 +7,7 @@ gulp.task("critical", () => {
     .src("public/**/*.html")
     .pipe(critical({
       base: "./",
-      inline: false,
+      inline: true,
       css: [
         "public/css/style.css"
       ],
