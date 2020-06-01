@@ -91,55 +91,67 @@
 
 					{{ range first 6 .Pages }}
 
-						{{ $page := . }}
+						{{ if .Params.img }}
 
-						<article class="shadow bg-white" style="max-width: 256px;">
+							{{ $page := . }}
 
-							{{ range .Resources.ByType "image" }}
+							{{ $imgSrc := .Params.img }}
 
-								{{ $img := .Resize "256x" }}
+							<article class="shadow bg-white" style="max-width: 256px;">
 
-								<button class="bg-gray-100 modal" type="button" tabindex="0">
+								{{ with .GetPage "images" }}
 
-									<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $img.RelPermalink }}" data-modal="{{ .Permalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
+									{{ $img := .Resources.GetMatch $imgSrc }}	
 
-								</button>
+									{{ if $img }}
 
-							{{ end }}
+										{{ $imgResized := $img.Resize "256x" }}
 
-							<div class="mx-4 mt-2 mb-8">
+										<button class="bg-gray-100 modal" type="button" tabindex="0">
 
-								<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
+											<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" data-modal="{{ $img.Permalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
 
-								<ul class="flex flex-wrap">
-
-								{{ range .Params.tags }}
-
-									{{ if eq $kind "section" }}
-
-										<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
-
-									{{ else }}
-
-										{{ if eq $title . }}
-
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="text-xs">#{{ . }}</a></li>
-
-										{{ else }}
-
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
-
-										{{ end }}
+										</button>
 
 									{{ end }}
 
 								{{ end }}
 
-								</ul>
+								<div class="mx-4 mt-2 mb-8">
 
-							</div>
+									<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
 
-						</article>
+									<ul class="flex flex-wrap">
+
+									{{ range .Params.tags }}
+
+										{{ if eq $kind "section" }}
+
+											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
+
+										{{ else }}
+
+											{{ if eq $title . }}
+
+												<li style="max-width: 16rem" class="mr-1 break-words"><a class="text-xs">#{{ . }}</a></li>
+
+											{{ else }}
+
+												<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+
+											{{ end }}
+
+										{{ end }}
+
+									{{ end }}
+
+									</ul>
+
+								</div>
+
+							</article>
+
+						{{ end }}
 
 					{{ end }}
 
@@ -151,59 +163,71 @@
 
 					{{ range after 6 .Pages }}
 
-						{{ $page := . }}
+						{{ if .Params.img }}
 
-						<article class="shadow bg-white" style="max-width: 256px;">
+							{{ $page := . }}
 
-							{{ range .Resources.ByType "image" }}
+							{{ $imgSrc := .Params.img }}
 
-								{{ $img := .Resize "256x" }}
+							<article class="shadow bg-white" style="max-width: 256px;">
 
-								<button class="bg-gray-100 modal" type="button" tabindex="0">
+								{{ with .GetPage "images" }}
 
-									<noscript class="loading-lazy">
+									{{ $img := .Resources.GetMatch $imgSrc }}	
 
-										<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $img.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ .Permalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
+									{{ if $img }}
 
-									</noscript>
+										{{ $imgResized := $img.Resize "256x" }}
 
-								</button>
+										<button class="bg-gray-100 modal" type="button" tabindex="0">
 
-							{{ end }}
+											<noscript class="loading-lazy">
 
-							<div class="mx-4 mt-2 mb-8">
+												<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ $img.Permalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
 
-								<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
+											</noscript>
 
-								<ul class="flex flex-wrap">
-
-								{{ range .Params.tags }}
-
-									{{ if eq $kind "section" }}
-
-										<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
-
-									{{ else }}
-
-										{{ if eq $title . }}
-
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="text-xs">#{{ . }}</a></li>
-
-										{{ else }}
-
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
-
-										{{ end }}
+										</button>
 
 									{{ end }}
 
 								{{ end }}
 
-								</ul>
+								<div class="mx-4 mt-2 mb-8">
 
-							</div>
+									<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
 
-						</article>
+									<ul class="flex flex-wrap">
+
+									{{ range .Params.tags }}
+
+										{{ if eq $kind "section" }}
+
+											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
+
+										{{ else }}
+
+											{{ if eq $title . }}
+
+												<li style="max-width: 16rem" class="mr-1 break-words"><a class="text-xs">#{{ . }}</a></li>
+
+											{{ else }}
+
+												<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+
+											{{ end }}
+
+										{{ end }}
+
+									{{ end }}
+
+									</ul>
+
+								</div>
+
+							</article>
+
+						{{ end }}
 
 					{{ end }}
 
