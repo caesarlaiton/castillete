@@ -1,6 +1,6 @@
 "use strict";
 
-const body = document.querySelector("body");
+const main = document.querySelector("main");
 
 function tagsModal(){
 
@@ -13,14 +13,14 @@ function tagsModal(){
 	// Hide tags when ESC is pressed and counter is not 0 (tags are being displayed).
 	window.addEventListener("keydown", event => {
 		if (event.key === "Escape" && counter) {
-			body.classList.remove("overflow-y-hidden");
+			main.classList.remove("overflow-y-hidden");
 			hideTags();
 		};
 	});
 
 	window.addEventListener("resize", () => {
 		if (counter && window.innerWidth >= 480){
-			body.classList.remove("overflow-y-hidden");
+			main.classList.remove("overflow-y-hidden");
 			hideTags();
 		};
 	});
@@ -31,7 +31,7 @@ function tagsModal(){
 	tagsBtn.addEventListener("click", () => {
 		if (counter){
 			aside.classList.add("opacity-0");
-			body.classList.remove("overflow-y-hidden");
+			main.classList.remove("overflow-y-hidden");
 			setTimeout(hideTags, 300);
 		} else {
 			showTags();
@@ -40,7 +40,7 @@ function tagsModal(){
 	});
 	
 	function showTags(){
-		body.classList.add("overflow-y-hidden");
+		main.classList.add("overflow-y-hidden");
 		editClasses("add", "remove");
 		counter++;
 		tagsTitle.focus();
@@ -96,7 +96,7 @@ function imgModal(){
 
 		imgModal.src = btnModal.firstElementChild.dataset.modal;
 
-		body.classList.add("overflow-y-hidden");
+		main.classList.add("overflow-y-hidden");
 		divModal.classList.remove("hidden");
 
 		exitModal.focus();
@@ -118,7 +118,7 @@ function imgModal(){
 
 		transitionClasses("add");
 
-		body.classList.remove("overflow-y-hidden");
+		main.classList.remove("overflow-y-hidden");
 
 		// Let animation finish before hiding modal.
 		setTimeout(() => {

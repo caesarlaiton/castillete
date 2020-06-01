@@ -4,7 +4,7 @@ backend:
 media_folder: content/portfolio/images
 public_folder: portfolio/images
 collections:
-  - name: "Portfolio"
+  - name: "portfolio"
     label: "Painting"
     folder: "content/portfolio"
     create: true
