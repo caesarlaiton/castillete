@@ -1,26 +1,22 @@
 <footer class="pt-16 pb-2 w-full flex-shrink text-center">
 
-	<ul class="px-2 max-w-screen-lg mx-auto flex justify-between items-center">
+	<ul class="px-2 max-w-screen-lg mx-auto flex items-center">
 
 		{{ if .IsHome }}
 
-			<li class="text-xs">Armando Reverón - {{ now.Year }}</li>
+			<li class="mr-auto text-xs">Armando Reverón - {{ now.Year }}</li>
 
 		{{ else }}
 
-			<li><a class="text-xs hover:text-gray-700 focus:text-gray--700 transition-colors ease-linear duration-300" href="/">Armando Reverón - {{ now.Year }}</a></li>
+			<li class="mr-auto"><a class="text-xs hover:text-gray-700 focus:text-gray--700 transition-colors ease-linear duration-300" href="/">Armando Reverón - {{ now.Year }}</a></li>
 
 		{{ end }}
 
-		<div class="flex">
+			<li class="mx-4"><a target="_blank" href="#" rel="noopener"><img class="w-4 h-4 opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" src="/svg/facebook.svg" alt="Facebook icon."></a></li>
 
-			<li class="mx-4"><a target="_blank" href="#"><img class="w-4 h-4 opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" src="/svg/facebook.svg"></a></li>
+			<li class="mr-4"><a target="_blank" href="https://instagram.com/caesarlaiton" rel="noopener"><img class="w-4 h-4 opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" src="/svg/instagram.svg" alt="Instagram icon."></a></li>
 
-			<li class="mr-4"><a target="_blank" href="https://instagram.com/caesarlaiton"><img class="w-4 h-4 opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" src="/svg/instagram.svg"></a></li>
-
-			<li><a target="_blank" href="https://twitter.com/caesarlaiton"><img class="w-4 h-4 opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" src="/svg/twitter.svg"></a></li>
-
-		</div>
+			<li><a target="_blank" href="https://twitter.com/caesarlaiton" rel="noopener"><img class="w-4 h-4 opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" src="/svg/twitter.svg" alt="Twitter icon."></a></li>
 
 	</ul>
 

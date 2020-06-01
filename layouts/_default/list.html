@@ -33,37 +33,37 @@
 
 				{{/* START vertical tags navigation. */}}
 
-				<aside class="w-40 mr-16 font-bold transition-opacity ease-in-out duration-300 opacity-0 xs:opacity-100 hidden xs:block">
+				<aside class="w-40 mr-6 font-bold transition-opacity ease-in-out duration-300 opacity-0 xs:opacity-100 hidden xs:block">
 
 					<h3 class="mb-2 text-sm outline-none tagsTitle" tabindex="0">Tags</h3>
 
-					<nav class="text-xs text-gray-500">
+					<nav class="text-xs text-gray-700">
 
 						<ul>
 
 						{{ if eq .Kind "section" }}
 
-							<li><a class="pl-2 py-2 block text-gray-500">All <span class="text-gray-500">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</a></span></li>
+							<li><a class="pl-2 py-2 block">All <span>({{ len (where .Site.Pages "Section" "==" "portfolio") }})</a></span></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
-								<li><a class="pl-2 py-2 break-words block opacity-75 hover:opacity-100 hover:text-gray-500 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
+								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
 
 							{{ end }}
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 opacity-75 block hover:opacity-100 hover:text-gray-500 focus:opacity-100 transition-opacity ease-linear duration-300" href="/portfolio/">All <span class="text-gray-500">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="/portfolio/">All <span class="opacity-75">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
 								{{ if eq $title .Page.Title }}
 
-									<li class="pl-2 py-2 break-words">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></li>
+									<li class="pl-2 py-2 break-words">{{ .Page.Title }} <span>({{ .Count }})</span></li>
 
 								{{ else }}
 
-									<li><a class="pl-2 py-2 block break-words opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 hover:text-gray-500" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="text-gray-500">({{ .Count }})</span></a></li>
+									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
 
 								{{ end }}
 
@@ -91,15 +91,17 @@
 
 					{{ range first 6 .Pages }}
 
+						{{ $page := . }}
+
 						<article class="shadow bg-white" style="max-width: 256px;">
 
 							{{ range .Resources.ByType "image" }}
 
 								{{ $img := .Resize "256x" }}
 
-								<button class="bg-black modal" type="button" tabindex="0">
+								<button class="bg-gray-100 modal" type="button" tabindex="0">
 
-									<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $img.RelPermalink }}" data-modal="{{ .Permalink }}" type="image/jpeg" width="256px" height="192px">
+									<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $img.RelPermalink }}" data-modal="{{ .Permalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
 
 								</button>
 
@@ -149,17 +151,19 @@
 
 					{{ range after 6 .Pages }}
 
+						{{ $page := . }}
+
 						<article class="shadow bg-white" style="max-width: 256px;">
 
 							{{ range .Resources.ByType "image" }}
 
 								{{ $img := .Resize "256x" }}
 
-								<button class="bg-black modal" type="button" tabindex="0">
+								<button class="bg-gray-100 modal" type="button" tabindex="0">
 
 									<noscript class="loading-lazy">
 
-										<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $img.RelPermalink }}" data-modal="{{ .Permalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
+										<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $img.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ .Permalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
 
 									</noscript>
 

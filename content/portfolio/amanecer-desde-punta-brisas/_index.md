@@ -6,6 +6,8 @@ date = 2020-05-27T15:15:50-04:00
 
 tags = ["Impressionism", "Landscape"]
 
+alt = "Painting showing the sunrise from Punta Brisas."
+
 [_build]
 	render = false
 

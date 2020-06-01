@@ -96,8 +96,8 @@ function imgModal(){
 
 		imgModal.src = btnModal.firstElementChild.dataset.modal;
 
-		body.classList.toggle("overflow-y-hidden");
-		divModal.classList.toggle("hidden");
+		body.classList.add("overflow-y-hidden");
+		divModal.classList.remove("hidden");
 
 		exitModal.focus();
 	};
@@ -109,20 +109,20 @@ function imgModal(){
 		// If the image you're hiding didn't load:
 		// toggle classes to not bug the next image animation.
 		if (!(imgModal.complete)){
-			transitionClasses();
+			transitionClasses("add");
 		};
 
-		btnModalNow.firstElementChild.classList.remove("opacity-75");
+		btnModalNow.firstElementChild.classList.remove("opacity-50");
 
-		divModal.classList.toggle("bg-black-opacity-75");
+		divModal.classList.remove("bg-black-opacity-75");
 
-		transitionClasses();
+		transitionClasses("add");
 
-		body.classList.toggle("overflow-y-hidden");
+		body.classList.remove("overflow-y-hidden");
 
 		// Let animation finish before hiding modal.
 		setTimeout(() => {
-			divModal.classList.toggle("hidden");
+			divModal.classList.add("hidden");
 
 			imgModal.src = "";
 		}, 500);
@@ -130,26 +130,24 @@ function imgModal(){
 	};
 
 	// Image animation classes.
-	function transitionClasses(){
-		// divModal.classList.toggle("bg-black-opacity-75");
-		divModal.firstElementChild.classList.toggle("translate-y-64");
-		divModal.firstElementChild.classList.toggle("opacity-0");
-		exitModal.classList.toggle("opacity-0");
+	function transitionClasses(act){
+		divModal.firstElementChild.classList[act]("translate-y-64", "opacity-0");
+		exitModal.classList[act]("opacity-0");
 	};
 
 	btnsModal.forEach(btnModal => {
 		btnModal.addEventListener("click", () => {
 			showImg(btnModal);
 
-			divModal.classList.toggle("bg-black-opacity-75");
+			divModal.classList.add("bg-black-opacity-75");
 
 			// Start animation when the image is completely loaded.
-			imgModal.addEventListener("load", transitionClasses);
+			imgModal.addEventListener("load", () => transitionClasses("remove"));
 		});
 
-		["mouseout", "blur"].forEach(event => btnModal.addEventListener(event, () => btnModal.firstElementChild.classList.remove("opacity-75") ));
+		["mouseout", "blur"].forEach(event => btnModal.addEventListener(event, () => btnModal.firstElementChild.classList.remove("opacity-50") ));
 
-		["mouseover", "focus"].forEach(event => btnModal.addEventListener(event, () => btnModal.firstElementChild.classList.add("opacity-75") ));
+		["mouseover", "focus"].forEach(event => btnModal.addEventListener(event, () => btnModal.firstElementChild.classList.add("opacity-50") ));
 	});
 
 };

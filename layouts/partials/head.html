@@ -12,7 +12,7 @@
 
 	<title>{{ $title }}</title>
 
-	<meta name="description" content="{{ .Description }}">
+	<meta name="description" content="{{ if .Params.description }} {{ .Params.Description }} {{ else }} {{ .Site.Params.description }} {{ end }}">
 
 	{{ $style := resources.Get "css/style.css" | resources.PostCSS }}
 
@@ -42,6 +42,6 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 
-	{{ if .IsHome }} {{/* <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> */}} {{ end }}
+	{{ if .IsHome }} <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script> {{ end }}
 
 </head>

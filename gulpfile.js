@@ -8,14 +8,14 @@ gulp.task("critical", () => {
     .pipe(critical({
       base: "./",
       inline: true,
+			minify: true,
+			timeout: 30000,
       css: [
         "public/css/style.css"
       ],
 			dimensions: [
 					{height: 768, width: 1366}
-			],
-			minify: true,
-			timeout: 30000
+			]
     }))
     .on("error", err => {
       log.error(err.message);
