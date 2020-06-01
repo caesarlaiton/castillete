@@ -95,7 +95,7 @@
 
 							{{ $page := . }}
 
-							{{ $imgSrc := .Params.img }}
+							{{ $imgSrc := path.Base .Params.img }}
 
 							<article class="shadow bg-white" style="max-width: 256px;">
 
@@ -105,7 +105,15 @@
 
 									{{ if $img }}
 
-										{{ $imgResized := $img.Resize "256x" }}
+                    {{ $imgResized := $img }}
+
+                    {{ $fnExt := path.Ext $imgSrc }}
+
+                    {{ if or (eq $fnExt ".jpg") (eq $fnExt ".jpeg") (eq $fnExt ".png") }}
+
+                      {{ $imgResized = $img.Resize "256x" }}
+
+                    {{ end }}
 
 										<button class="bg-gray-100 modal" type="button" tabindex="0">
 
@@ -167,7 +175,7 @@
 
 							{{ $page := . }}
 
-							{{ $imgSrc := .Params.img }}
+							{{ $imgSrc := path.Base .Params.img }}
 
 							<article class="shadow bg-white" style="max-width: 256px;">
 
@@ -177,7 +185,15 @@
 
 									{{ if $img }}
 
-										{{ $imgResized := $img.Resize "256x" }}
+                    {{ $imgResized := $img }}
+
+                    {{ $fnExt := path.Ext $imgSrc }}
+
+                    {{ if or (eq $fnExt ".jpg") (eq $fnExt ".jpeg") (eq $fnExt ".png") }}
+
+                      {{ $imgResized = $img.Resize "256x" }}
+
+                    {{ end }}
 
 										<button class="bg-gray-100 modal" type="button" tabindex="0">
 
