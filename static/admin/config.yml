@@ -36,6 +36,8 @@ collections:
         widget: "string"
 
       - name: "_build"
+        widget: "object"
+        fields:
           - name: "render"
-            widget: "hidden"
+            widget: "string"
             default: "false"
