@@ -34,3 +34,8 @@ collections:
       - label: "Alt text"
         name: "alt"
         widget: "string"
+
+      - name: "_build"
+          name: "render"
+          widget: "hidden"
+          default: "false"

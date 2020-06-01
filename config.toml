@@ -6,6 +6,8 @@ title = "Castillete"
 
 enableRobotsTXT = true
 
+pluralizelisttitles = false
+
 [taxonomies]
 	tag = "tags"
 
