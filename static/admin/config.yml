@@ -15,9 +15,9 @@ collections:
       - label: "Image"
 				name: "img"
 				widget: "image"
-				media_library:
-				  config:
-					  multiple: false
+#				media_library:
+#          config:
+#            multiple: false
 
       - label: "Title"
 				name: "title"
