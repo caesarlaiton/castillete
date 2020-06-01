@@ -13,24 +13,24 @@ collections:
       preview: false
     fields:
       - label: "Image"
-				name: "img"
-				widget: "image"
+        name: "img"
+        widget: "image"
 #				media_library:
-#          config:
-#            multiple: false
+#         config:
+#           multiple: false
 
       - label: "Title"
-				name: "title"
-				widget: "string"
+        name: "title"
+        widget: "string"
 
       - label: "Creation date"
-				name: "date"
-				widget: "datetime"
+        name: "date"
+        widget: "datetime"
 
       - label: "Tags"
-				name: "tags"
-				widget: "list"
+        name: "tags"
+        widget: "list"
 
       - label: "Alt text"
-				name: "alt"
-				widget: "string"
+        name: "alt"
+        widget: "string"
