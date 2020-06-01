@@ -4,8 +4,8 @@ backend:
 media_folder: content/portfolio/images
 public_folder: portfolio/images
 collections:
-  - name: "portfolio"
-    label: "Portfolio"
+  - name: "Portfolio"
+    label: "Painting"
     folder: "content/portfolio"
     create: true
     # slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -15,9 +15,9 @@ collections:
       - label: "Image"
         name: "img"
         widget: "image"
-#				media_library:
-#         config:
-#           multiple: false
+        media_library:
+          config:
+            multiple: false
 
       - label: "Title"
         name: "title"
