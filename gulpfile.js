@@ -10,8 +10,8 @@ gulp.task("critical", () => {
       inline: true,
 			minify: true,
 			timeout: 30000,
-      css: [
-        "public/css/style.css"
+      css : [
+        "public/css/style.min.css"
       ],
 			dimensions: [
 					{height: 768, width: 1366}

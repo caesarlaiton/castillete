@@ -4,7 +4,7 @@
   "description": "A website about the Venezuelan painter Armando Reverón.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "hugo": "NODE_ENV=production hugo --gc && gulp critical"
   },
   "repository": {
     "type": "git",

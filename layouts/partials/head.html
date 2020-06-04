@@ -20,7 +20,7 @@
 
 	{{ if $isProd }}
 
-		{{ $style = $style | minify | fingerprint }}
+		{{ $style = $style | minify }}
 
 	{{ end }}
 
@@ -42,6 +42,6 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="theme-color" content="#ffffff">
 
-	{{ if .IsHome }} <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script> {{ end }}
+	{{ if .IsHome }} {{/* <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script> */}} {{ end }}
 
 </head>

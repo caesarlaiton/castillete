@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master # Branch to update (optional; defaults to master)
+  branch: production # Branch to update (optional; defaults to master)
 media_folder: content/portfolio/images
 public_folder: portfolio/images
 collections:
@@ -34,3 +34,10 @@ collections:
       - label: "Alt text"
         name: "alt"
         widget: "string"
+
+      - name: "_build"
+        widget: "hidden"
+        fields:
+          - name: "render"
+            widget: "hidden"
+            default: "false"
