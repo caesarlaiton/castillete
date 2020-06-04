@@ -1,4 +1,4 @@
-baseURL = "caesarlaiton.github.io/castillete/"
+baseURL = "https://caesarlaiton.github.io/castillete/"
 
 publishDir = "docs"
 

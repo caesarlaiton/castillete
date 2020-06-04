@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Portrait on Castillete</title>
-    <link>caesarlaiton.github.io/castillete/portfolio/tag/portrait/</link>
+    <link>https://caesarlaiton.github.io/castillete/portfolio/tag/portrait/</link>
     <description>Recent content in Portrait on Castillete</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 May 2020 08:55:30 -0400</lastBuildDate>
     
-	<atom:link href="caesarlaiton.github.io/castillete/portfolio/tag/portrait/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://caesarlaiton.github.io/castillete/portfolio/tag/portrait/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
