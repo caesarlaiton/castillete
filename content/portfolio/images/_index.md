@@ -1,6 +1,0 @@
-+++
-
-[_build]
-  render = false
-
-+++
