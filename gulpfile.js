@@ -4,14 +4,14 @@ const gulp = require("gulp"),
 
 gulp.task("critical", () => {
   return gulp
-    .src("public/**/*.html")
+    .src("docs/**/*.html")
     .pipe(critical({
       base: "./",
       inline: true,
 			minify: true,
 			timeout: 30000,
       css : [
-        "public/css/style.min.css"
+        "docs/css/style.min.css"
       ],
 			dimensions: [
 					{height: 768, width: 1366}
@@ -20,5 +20,5 @@ gulp.task("critical", () => {
     .on("error", err => {
       log.error(err.message);
     })
-    .pipe(gulp.dest("public"));
+    .pipe(gulp.dest("docs"));
 });
