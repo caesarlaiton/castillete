@@ -1,4 +1,5 @@
 node_modules
 resources
-public
 content
+static
+public
