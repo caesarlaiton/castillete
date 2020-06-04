@@ -6,7 +6,7 @@
 
 			<li class="mr-24">
 
-				<a class="p-4 block nav" href="{{ .Site.BaseURL }}">Home
+				<a class="p-4 block nav" href="{{ .Site.Home.RelPermalink }}">Home
 
 					<div class="{{ if .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500 transition-width ease-in-out duration-500"></div>
 
@@ -16,7 +16,7 @@
 
 			<li class="ml-2">
 
-				<a class="p-4 block nav" href="{{ .Site.BaseURL }}portfolio/">Portfolio
+				<a class="p-4 block nav" href="{{ .Site.Home.RelPermalink }}portfolio/">Portfolio
 
 					<div class="{{ if not .IsHome }} w-full {{ else }} w-0 {{ end }} h-1 bg-gray-500 transition-width ease-in-out duration-500"></div>
 

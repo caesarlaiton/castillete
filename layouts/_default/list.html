@@ -47,13 +47,13 @@
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
-								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.Permalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
+								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
 
 							{{ end }}
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Site.BaseURL }}portfolio/">All <span class="opacity-75">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Site.Home.RelPermalink }}portfolio/">All <span class="opacity-75">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
@@ -63,7 +63,7 @@
 
 								{{ else }}
 
-									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.Permalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
+									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
 
 								{{ end }}
 
@@ -117,7 +117,7 @@
 
 										<button class="bg-gray-100 modal" type="button" tabindex="0">
 
-											<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.Permalink }}" data-modal="{{ $img.Permalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
+											<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" data-modal="{{ $img.RelPermalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
 
 										</button>
 
@@ -135,7 +135,7 @@
 
 										{{ if eq $kind "section" }}
 
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="https://caesarlaiton.github.io/castillete/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
+											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/castillete/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
 
 										{{ else }}
 
@@ -145,7 +145,7 @@
 
 											{{ else }}
 
-												<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="https://caesarlaiton.github.io/castillete/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+												<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/castillete/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
 
 											{{ end }}
 
@@ -199,7 +199,7 @@
 
 											<noscript class="loading-lazy">
 
-												<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ $img.Permalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
+												<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ $img.RelPermalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
 
 											</noscript>
 
@@ -219,7 +219,7 @@
 
 										{{ if eq $kind "section" }}
 
-											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="https://caesarlaiton.github.io/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
+											<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">{{ if . }} #{{ . }} {{ else }} &nbsp; {{ end }}</a></li>
 
 										{{ else }}
 
@@ -229,7 +229,7 @@
 
 											{{ else }}
 
-												<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="https://caesarlaiton.github.io/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
+												<li style="max-width: 16rem" class="mr-1 break-words"><a class="opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300 text-xs" href="/portfolio/tag/{{ anchorize . }}/">#{{ . }}</a></li>
 
 											{{ end }}
 
@@ -263,7 +263,7 @@
 
 			{{/* START button to display tags in small screens. */}}
 
-			<button class="p-1 bg-gray-500 xs:hidden font-bold text-gray-100 shadow opacity-75 hover:opacity-100 focus:opacity-100 fixed bottom-0 left-0 w-full text-center z-10 tagsBtn transition-opacity ease-linear duration-300" href="{{ .Site.BaseURL }}portfolio/tags/" type="button">Tags</button>
+			<button class="p-1 bg-gray-500 xs:hidden font-bold text-gray-100 shadow opacity-75 hover:opacity-100 focus:opacity-100 fixed bottom-0 left-0 w-full text-center z-10 tagsBtn transition-opacity ease-linear duration-300" href="{{ .Site.Home.RelPermalink }}portfolio/tags/" type="button">Tags</button>
 
 			{{/* END button to display tags in small screens. */}}
 
@@ -281,7 +281,7 @@
 
 			<section class="text-center">
 
-				<img class="w-64 h-64 mb-8 mx-auto" src="{{ .Site.BaseURL }}svg/undraw_image_upload_wqh3.svg">
+				<img class="w-64 h-64 mb-8 mx-auto" src="{{ .Site.Home.RelPermalink }}svg/undraw_image_upload_wqh3.svg">
 
 				<a class="p-4 opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="#"><span class="p-2 bg-gray-500 shadow rounded text-gray-100 font-bold">Upload content</span></a>
 
@@ -305,6 +305,6 @@
 	
 	{{ end }}
 
-	<script src="{{ $js.Permalink }}"></script>
+	<script src="{{ $js.RelPermalink }}"></script>
 
 {{ end }}
