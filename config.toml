@@ -1,6 +1,6 @@
 baseURL = "caesarlaiton.github.io/castillete/"
 
-publishDir = "docs"
+publishDir = "docs/"
 
 languageCode = "en-us"
 
