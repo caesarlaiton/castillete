@@ -37,7 +37,7 @@
 
 					<h3 class="mb-2 text-sm outline-none tagsTitle" tabindex="0">Tags</h3>
 
-					<nav class="text-xs text-gray-700">
+					<nav class="text-xs text-gray-600">
 
 						<ul>
 
@@ -47,13 +47,13 @@
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
-								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
+								<li><a class="pl-2 py-2 break-words block opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>({{ .Count }})</span></a></li>
 
 							{{ end }}
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Site.Home.RelPermalink }}portfolio/">All <span class="opacity-75">({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 block opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Site.Home.RelPermalink }}portfolio/">All <span>({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
@@ -63,7 +63,7 @@
 
 								{{ else }}
 
-									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="opacity-75">({{ .Count }})</span></a></li>
+									<li><a class="pl-2 py-2 block break-words opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>({{ .Count }})</span></a></li>
 
 								{{ end }}
 
