@@ -4,7 +4,7 @@
   "description": "A website about the Venezuelan painter Armando Reverón.",
   "main": "index.js",
   "scripts": {
-    "hugo": "NODE_ENV=production hugo --gc && gulp critical"
+    "hugo": "NODE_ENV=production hugo --baseURL='https://caesarlaiton.github.io/castillete/' --gc && gulp critical"
   },
   "repository": {
     "type": "git",

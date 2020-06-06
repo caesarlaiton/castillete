@@ -111,7 +111,7 @@
 
                     {{ if or (eq $fnExt ".jpg") (eq $fnExt ".jpeg") (eq $fnExt ".png") }}
 
-                      {{ $imgResized = $img.Resize "256x" }}
+                      {{ $imgResized = $img.Resize "256x192" }}
 
                     {{ end }}
 
@@ -129,7 +129,7 @@
 
 									<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
 
-									<ul class="flex flex-wrap">
+									<ul class="flex flex-wrap text-gray-800">
 
 									{{ range .Params.tags }}
 
@@ -191,7 +191,7 @@
 
                     {{ if or (eq $fnExt ".jpg") (eq $fnExt ".jpeg") (eq $fnExt ".png") }}
 
-                      {{ $imgResized = $img.Resize "256x" }}
+                      {{ $imgResized = $img.Resize "256x192" }}
 
                     {{ end }}
 
@@ -213,7 +213,7 @@
 
 									<h3>{{ if .Title }} {{ .Title }} {{ else }} &nbsp; {{ end }}</h3>
 
-									<ul class="flex flex-wrap">
+									<ul class="flex flex-wrap text-gray-800">
 
 									{{ range .Params.tags }}
 
