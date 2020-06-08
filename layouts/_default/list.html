@@ -37,7 +37,7 @@
 
 					<h3 class="mb-2 text-sm outline-none tagsTitle" tabindex="0">Tags</h3>
 
-					<nav class="text-xs text-gray-600">
+					<nav class="text-xs text-gray-800">
 
 						<ul>
 
@@ -47,13 +47,13 @@
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
-								<li><a class="pl-2 py-2 break-words block opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>({{ .Count }})</span></a></li>
+								<li><a class="pl-2 py-2 break-words block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>({{ .Count }})</span></a></li>
 
 							{{ end }}
 
 						{{ else }}
 
-							<li><a class="pl-2 py-2 block opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Site.Home.RelPermalink }}portfolio/">All <span>({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
+							<li><a class="pl-2 py-2 block opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Site.Home.RelPermalink }}portfolio/">All <span>({{ len (where .Site.Pages "Section" "==" "portfolio") }})</span></a></li>
 
 							{{ range .Site.Taxonomies.tags.ByCount }}
 
@@ -63,7 +63,7 @@
 
 								{{ else }}
 
-									<li><a class="pl-2 py-2 block break-words opacity-75 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>({{ .Count }})</span></a></li>
+									<li><a class="pl-2 py-2 block break-words opacity-50 hover:opacity-100 focus:opacity-100 transition-opacity ease-linear duration-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>({{ .Count }})</span></a></li>
 
 								{{ end }}
 
@@ -117,7 +117,7 @@
 
 										<button class="bg-gray-100 modal" type="button" tabindex="0">
 
-											<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" data-modal="{{ $img.RelPermalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
+											<img class="shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" data-modal="{{ $img.RelPermalink }}" alt="{{ $page.Params.alt }}" type="image/jpeg" width="256px" height="192px">
 
 										</button>
 
@@ -199,7 +199,7 @@
 
 											<noscript class="loading-lazy">
 
-												<img class="w-64 h-48 shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ $img.RelPermalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
+												<img class="shadow cursor-pointer transition-opacity ease-linear duration-300" src="{{ $imgResized.RelPermalink }}" alt="{{ $page.Params.alt }}" data-modal="{{ $img.RelPermalink }}" loading="lazy" type="image/jpeg" width="256" height="192">
 
 											</noscript>
 
