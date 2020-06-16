@@ -17,9 +17,13 @@
 
 		<script src="{{ .Site.Home.RelPermalink }}js/loading-attribute-polyfill.min.js"></script>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    {{ if .IsHome }}
 
-    <script> AOS.init(); </script>
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+      <script> AOS.init(); </script>
+
+    {{ end }}
 
 	</body>
 
